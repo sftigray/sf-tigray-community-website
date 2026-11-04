@@ -1,0 +1,39 @@
+
+backend:
+  name: github
+  repo: sftigray/sf-tigray-community-website
+  branch: main
+  base_url: https://sftigraycommunity.org
+  auth_endpoint: api/auth
+
+site_url: https://sftigraycommunity.org
+display_url: https://sftigraycommunity.org
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "news"
+    label: "News & Announcements"
+    folder: "content/news"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Photo", name: "image", widget: "image", required: false}
+      - {label: "Announcement", name: "body", widget: "markdown"}
+
+  - name: "documents"
+    label: "Community Documents"
+    folder: "content/documents"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - {label: "Document Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Upload Document", name: "file", widget: "file"}
