@@ -286,7 +286,23 @@ textarea {
     <button class="btn green" type="submit">Submit Registration</button>
   </form>
 </div>
-<style>
+
+  <style>
+    
+form[name="membership-registration"] label:has(input[name="community-rules-agreement"]) {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+form[name="membership-registration"] input[name="community-rules-agreement"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex-shrink: 0;
+}
+
 form[name="membership-registration"] label {
   display: block;
   color: #203229;
