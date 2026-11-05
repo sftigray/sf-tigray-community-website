@@ -327,6 +327,23 @@ form.addEventListener('input', () => { success.style.display = 'none'; });
  refreshGallery();
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshGallery();});
 })();
+
+const membershipForm = document.querySelector('form[name="membership-registration"]');
+
+if (membershipForm) {
+  membershipForm.addEventListener('submit', () => {
+    const data = Object.fromEntries(new FormData(membershipForm));
+
+    fetch('https://script.google.com/macros/s/AKfycbyZV6ztkSArc49sIU2ker9JdtS95pcBCANPlkJhnLcybEs62SB8ErNMciRi_QuNaZVx/exec, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(data),
+      keepalive: true
+    }).catch(error => console.error('Membership sync failed:', error));
+  });
+}
+
 </script>
 </body>
 </html>
