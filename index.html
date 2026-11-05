@@ -165,6 +165,17 @@ html{color-scheme:light}header{position:relative;z-index:10}footer{background:#0
  .hero .hero-photo { object-fit:contain; object-position:center center; }
  .hero-grid { grid-template-columns:1fr; padding:36px 0 48px; }
 }
+/* Remove empty space around the main photo */
+section.hero {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.hero .hero-image-wrap {
+  height: auto;
+}
+.hero .hero-photo {
+  height: auto;
+}
 </style>
 </head>
 <body>
