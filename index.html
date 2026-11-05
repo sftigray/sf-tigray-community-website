@@ -295,7 +295,22 @@ form[name="membership-registration"] label {
 </style>    
 </div>
 </section>
-<section class="mission" id="gallery"><div class="wrap"><div class="section-head"><div class="eyebrow">Community moments</div><h2>Photo Gallery</h2><p>Community photos will appear here when they are provided and approved for publication.</p></div><div class="gallery-grid" id="cloudinary-gallery"><figure class="gallery-photo"><img src="https://res.cloudinary.com/ejhsjxfp/image/upload/v1793678598/IMG_0731" alt="Axum Obelisk" loading="lazy"><figcaption>Axum Obelisk</figcaption></figure></div><p id="gallery-status" class="placeholder-note" role="status" aria-live="polite">Checking for new community photos…</p></div></section><section id="donations"><div class="wrap"><div class="donate-panel"><div><h2>Support Our Community</h2><p>Donation details will be added once an official giving method is provided.</p><p class="placeholder-note">Donation link: not yet configured.</p></div><a class="btn" href="#contact">Contact Us About Donating →</a></div></div></section><section class="contact" id="contact">
+
+<style>
+#cloudinary-gallery .gallery-photo img {
+  cursor: zoom-in;
+}
+</style>
+<script>
+document.addEventListener('click', function(event) {
+  const photo = event.target.closest('#cloudinary-gallery img');
+  if (photo) {
+    window.open(photo.src, '_blank');
+  }
+});
+</script>
+
+  <section class="mission" id="gallery"><div class="wrap"><div class="section-head"><div class="eyebrow">Community moments</div><h2>Photo Gallery</h2><p>Community photos will appear here when they are provided and approved for publication.</p></div><div class="gallery-grid" id="cloudinary-gallery"><figure class="gallery-photo"><img src="https://res.cloudinary.com/ejhsjxfp/image/upload/v1793678598/IMG_0731" alt="Axum Obelisk" loading="lazy"><figcaption>Axum Obelisk</figcaption></figure></div><p id="gallery-status" class="placeholder-note" role="status" aria-live="polite">Checking for new community photos…</p></div></section><section id="donations"><div class="wrap"><div class="donate-panel"><div><h2>Support Our Community</h2><p>Donation details will be added once an official giving method is provided.</p><p class="placeholder-note">Donation link: not yet configured.</p></div><a class="btn" href="#contact">Contact Us About Donating →</a></div></div></section><section class="contact" id="contact">
 <div class="wrap contact-grid"><div><div class="eyebrow">Say hello</div><h2>Let’s connect.</h2><p class="body-copy">Have a question, an idea, or want to get involved? Send us a message. We welcome your interest and look forward to hearing from you.</p><div class="contact-detail"><span class="feature-icon">✉</span><div><b>Email</b><a href="mailto:info@sftigraycommunity.org" style="overflow-wrap:anywhere">info@sftigraycommunity.org</a></div></div><div class="contact-detail"><span class="feature-icon">⌖</span><div><b>Community</b><span>San Francisco and the greater Bay Area</span></div></div></div>
 <form class="form-card" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
 <input type="hidden" name="form-name" value="contact">
