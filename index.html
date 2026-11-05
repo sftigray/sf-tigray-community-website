@@ -358,12 +358,7 @@ mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () 
 }));
 const form = document.getElementById('contactForm');
 const success = document.getElementById('success');
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  if (!form.reportValidity()) return;
-  success.style.display = 'block';
-  success.scrollIntoView({behavior: 'smooth', block: 'nearest'});
-});
+
 form.addEventListener('input', () => { success.style.display = 'none'; });
 </script>
 <script>
