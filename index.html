@@ -234,14 +234,16 @@ section.hero {
 </section>
 <section class="mission" id="gallery"><div class="wrap"><div class="section-head"><div class="eyebrow">Community moments</div><h2>Photo Gallery</h2><p>Community photos will appear here when they are provided and approved for publication.</p></div><div class="gallery-grid" id="cloudinary-gallery"><figure class="gallery-photo"><img src="https://res.cloudinary.com/ejhsjxfp/image/upload/v1793678598/IMG_0731" alt="Axum Obelisk" loading="lazy"><figcaption>Axum Obelisk</figcaption></figure></div><p id="gallery-status" class="placeholder-note" role="status" aria-live="polite">Checking for new community photos…</p></div></section><section id="donations"><div class="wrap"><div class="donate-panel"><div><h2>Support Our Community</h2><p>Donation details will be added once an official giving method is provided.</p><p class="placeholder-note">Donation link: not yet configured.</p></div><a class="btn" href="#contact">Contact Us About Donating →</a></div></div></section><section class="contact" id="contact">
 <div class="wrap contact-grid"><div><div class="eyebrow">Say hello</div><h2>Let’s connect.</h2><p class="body-copy">Have a question, an idea, or want to get involved? Send us a message. We welcome your interest and look forward to hearing from you.</p><div class="contact-detail"><span class="feature-icon">✉</span><div><b>Email</b><a href="mailto:info@sftigraycommunity.org" style="overflow-wrap:anywhere">info@sftigraycommunity.org</a></div></div><div class="contact-detail"><span class="feature-icon">⌖</span><div><b>Community</b><span>San Francisco and the greater Bay Area</span></div></div></div>
-<form class="form-card" id="contactForm">
+<form class="form-card" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+<input type="hidden" name="form-name" value="contact">
+<p hidden><label>Leave empty: <input name="bot-field"></label></p>
 <div class="form-grid"><div class="field"><label for="first">First name *</label><input autocomplete="given-name" id="first" name="first" placeholder="Your first name" required=""/></div><div class="field"><label for="last">Last name *</label><input autocomplete="family-name" id="last" name="last" placeholder="Your last name" required=""/></div></div>
 <div class="field"><label for="email">Email address *</label><input autocomplete="email" id="email" name="email" placeholder="you@example.com" required="" type="email"/></div>
 <div class="field"><label for="topic">I’m reaching out about</label><select id="topic" name="topic"><option>General question</option><option>Membership</option><option>Events</option><option>Volunteering</option><option>Community announcement</option></select></div>
 <div class="field"><label for="message">Your message *</label><textarea id="message" name="message" placeholder="How can we help?" required=""></textarea></div>
-<button class="btn green" type="submit">Check message <span>→</span></button>
-<p class="form-note">Preview only: your details are checked locally and are not sent or stored. Connect a secure form service before accepting messages.</p>
-<div aria-live="polite" class="success" id="success" role="status">Your information looks complete. This is a preview only: no message has been sent. Please connect a form service before launch.</div>
+<button class="btn green" type="submit">Send message <span>→</span></button>
+<p class="form-note">We’ll use your details to respond to your message.</p>
+<div aria-live="polite" class="success" id="success" role="status"></div>
 </form>
 </div>
 </section>
