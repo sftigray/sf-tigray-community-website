@@ -235,6 +235,7 @@ section.hero {
   <form name="membership-registration" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form-card">
     <input type="hidden" name="form-name" value="membership-registration">
     <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
+    
     <h2>Membership Registration</h2>
     <p>Join the San Francisco Tigray Community.</p>
     <label>First Name * <input type="text" name="first-name" required></label>
@@ -244,6 +245,15 @@ section.hero {
     <p>Your information will be used to process your membership registration and contact you about your membership.</p>
     <button class="btn green" type="submit">Submit Registration</button>
   </form>
+</div>
+<style>
+form[name="membership-registration"] label {
+  display: block;
+  color: #203229;
+  font-weight: 600;
+  margin: 12px 0;
+}
+</style>    
 </div>
 </section>
 <section class="mission" id="gallery"><div class="wrap"><div class="section-head"><div class="eyebrow">Community moments</div><h2>Photo Gallery</h2><p>Community photos will appear here when they are provided and approved for publication.</p></div><div class="gallery-grid" id="cloudinary-gallery"><figure class="gallery-photo"><img src="https://res.cloudinary.com/ejhsjxfp/image/upload/v1793678598/IMG_0731" alt="Axum Obelisk" loading="lazy"><figcaption>Axum Obelisk</figcaption></figure></div><p id="gallery-status" class="placeholder-note" role="status" aria-live="polite">Checking for new community photos…</p></div></section><section id="donations"><div class="wrap"><div class="donate-panel"><div><h2>Support Our Community</h2><p>Donation details will be added once an official giving method is provided.</p><p class="placeholder-note">Donation link: not yet configured.</p></div><a class="btn" href="#contact">Contact Us About Donating →</a></div></div></section><section class="contact" id="contact">
