@@ -1,0 +1,64 @@
+
+const OWNER = "sftigray";
+const REPO = "sf-tigray-community-website";
+
+const headers = {
+  Accept: "application/vnd.github+json",
+  "User-Agent": "SF-Tigray-Community"
+};
+
+function getField(markdown, name) {
+  const frontmatter = markdown.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/);
+  if (!frontmatter) return "";
+
+  const line = frontmatter[1].split(/\r?\n/).find(
+    row => row.trim().startsWith(name + ":")
+  );
+
+  if (!line) return "";
+  return line.slice(line.indexOf(":") + 1).trim()
+    .replace(/^["']|["']$/g, "");
+}
+
+exports.handler = async function () {
+  try {
+    const api = `https://api.github.com/repos/${OWNER}/${REPO}/contents/content/documents?ref=main`;
+
+    const response = await fetch(api, { headers });
+    if (!response.ok) throw new Error("Unable to list documents");
+
+    const files = await response.json();
+    const documents = await Promise.all(
+      files.filter(file => file.name.endsWith(".md")).map(async file => {
+        const result = await fetch(file.download_url);
+        if (!result.ok) throw new Error("Unable to read document");
+
+        const markdown = await result.text();
+        return {
+          title: getField(markdown, "title"),
+          date: getField(markdown, "date"),
+          description: getField(markdown, "description"),
+          file: getField(markdown, "file") ||
+                getField(markdown, "document")
+        };
+      })
+    );
+
+    documents.sort((a, b) =>
+      new Date(b.date || 0) - new Date(a.date || 0)
+    );
+
+    return {
+      statusCode: 200,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ documents })
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      statusCode: 500,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ error: "Unable to load documents" })
+    };
+  }
+};
