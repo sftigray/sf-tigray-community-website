@@ -331,7 +331,7 @@ textarea {
 </article>
   
 
-<div id="community-news-feed" aria-live="polite">
+<div id="community-google-news" aria-live="polite">
   <h3>Latest Community News</h3>
   <iframe
     src="https://docs.google.com/document/d/e/2PACX-1vSPXBFrLqGHioH1lmMqD9hBCt01FJcMYCC74JCykoiV3VUMVNVSpyx00lsx_OjxC9wGkGF7eT8xCwwd/pub?embedded=true"
@@ -381,6 +381,7 @@ textarea {
     <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
     
     <h2>Membership Registration</h2>
+    <p><a href="https://forms.gle/FLqxKiaih6mzRKzM6" target="_blank" rel="noopener noreferrer">Open Google Membership Registration Form</a></p>
     <p>Join the San Francisco Tigray Community.</p>
     <label>First Name * <input type="text" name="first-name" required></label>
     <label>Last Name * <input type="text" name="last-name" required></label>
@@ -517,68 +518,7 @@ if (membershipForm) {
 
 </script>
 
-<script>
-(async function loadCommunityNews() {
-  const feed = document.getElementById("community-news-feed");
-  if (!feed) return;
 
-  try {
-    const response = await fetch("/.netlify/functions/community-news", {
-      cache: "no-store"
-    });
-    if (!response.ok) throw new Error("News unavailable");
-
-    const data = await response.json();
-    if (!Array.isArray(data.announcements)) {
-      throw new Error("Invalid news response");
-    }
-
-    feed.replaceChildren();
-
-    const heading = document.createElement("h3");
-    heading.textContent = "Latest Community News";
-    feed.appendChild(heading);
-
-    if (data.announcements.length === 0) {
-      const message = document.createElement("p");
-      message.textContent = "No announcements yet.";
-      feed.appendChild(message);
-      return;
-    }
-
-    data.announcements.forEach(item => {
-      const article = document.createElement("article");
-      const title = document.createElement("h4");
-      title.textContent = item.title || "Community Announcement";
-      article.appendChild(title);
-
-      if (item.date && !Number.isNaN(Date.parse(item.date))) {
-        const date = document.createElement("p");
-        date.textContent = new Date(item.date).toLocaleDateString();
-        article.appendChild(date);
-      }
-
-      if (item.description) {
-        const description = document.createElement("p");
-        description.textContent = item.description;
-        article.appendChild(description);
-      }
-
-      if (item.body) {
-        const body = document.createElement("p");
-        body.style.whiteSpace = "pre-line";
-        body.textContent = item.body;
-        article.appendChild(body);
-      }
-
-      article.style.marginTop = "24px";
-      feed.appendChild(article);
-    });
-  } catch (error) {
-    console.error("Community news could not load:", error);
-  }
-})();
-</script>
 
 </body>
 </html>
