@@ -360,10 +360,14 @@ textarea {
     </a>
   </p>
 
+
 <div id="approved-community-documents">
   <h3>Approved Community Documents</h3>
-  <p>Approved documents will appear here.</p>
+  <div id="approved-documents-list">
+    <p>No approved public documents yet.</p>
+  </div>
 </div>
+
   
 </div>
   
@@ -528,6 +532,54 @@ if (membershipForm) {
 </script>
 
 
+<script>
+(async function () {
+  const endpoint = "https://script.google.com/macros/s/AKfycbyItWVv_pP1m1w-OA68UTozATyCMP3y8BEWJ_W_SRSzWjelw_C9cOOB7DAcj2IuIEP_/exec";
+
+  const container = document.getElementById("approved-documents-list");
+  if (!container) return;
+
+  try {
+    const response = await fetch(endpoint);
+    if (!response.ok) throw new Error("Unable to load documents");
+
+    const documents = await response.json();
+    container.replaceChildren();
+
+    if (!Array.isArray(documents) || documents.length === 0) {
+      container.textContent = "No approved public documents yet.";
+      return;
+    }
+
+    documents.forEach(doc => {
+      if (!doc.title || !doc.url) return;
+
+      const item = document.createElement("p");
+      const link = document.createElement("a");
+
+      link.textContent = doc.title;
+      link.href = doc.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+
+      item.appendChild(link);
+
+      if (doc.description) {
+        const description = document.createElement("span");
+        description.textContent = " — " + doc.description;
+        item.appendChild(description);
+      }
+
+      container.appendChild(item);
+    });
+  } catch (error) {
+    console.error("Approved documents:", error);
+    container.textContent = "Documents are temporarily unavailable.";
+  }
+})();
+</script>
+
+  
 
 </body>
 </html>
