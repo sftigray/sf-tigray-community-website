@@ -282,33 +282,144 @@ textarea {
 }
 
   
+
+/* 2026 refreshed homepage - preserves all original sections and integrations */
+:root { --sf-navy:#09295c; --sf-gold:#ffcb32; }
+header {background:#fff!important; box-shadow:0 3px 18px rgba(10,35,77,.10);}
+header .brand {color:#09295c!important; font-weight:900!important; font-size:clamp(20px,2.2vw,31px)!important; line-height:1.08!important;}
+header .mark {background:linear-gradient(140deg,#ffd137 0 48%,#c9192c 49% 100%)!important;color:#09295c!important;border:2px solid #09295c;}
+header nav a {font-weight:750!important;}
+.hero {background:linear-gradient(115deg,#063b80,#061e4b)!important;color:white!important;min-height:0!important;overflow:hidden;}
+.hero .hero-image-wrap {position:absolute!important;left:0!important;top:0!important;width:50%!important;height:100%!important;opacity:1!important;z-index:0!important;}
+.hero .hero-photo {width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;filter:none!important;}
+.hero::before {content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 25%,#073b80 53%,#061f50 100%);z-index:1;pointer-events:none;}
+.hero .hero-grid {position:relative!important;z-index:2!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:28px!important;align-items:center!important;padding-top:65px!important;padding-bottom:65px!important;}
+.hero .hero-grid > div:first-child {grid-column:2!important;}
+.hero .hero-card {display:none!important;}
+.hero h1 {font-size:clamp(34px,4.2vw,66px)!important;line-height:1.08!important;color:white!important;letter-spacing:-.035em!important;}
+.hero h1::after {content:"";display:block;width:58%;height:4px;background:#ffcb32;margin:20px auto 10px;border-radius:50%;}
+.hero p,.hero .hero-note {color:white!important;font-size:clamp(17px,1.6vw,22px)!important;line-height:1.55!important;}
+.hero .eyebrow {color:#ffcb32!important;}
+.hero .btn.gold {background:#ffcb32!important;color:#09295c!important;border-radius:30px!important;font-weight:900!important;}
+.hero .btn.outline {border-color:#fff!important;color:#fff!important;}
+.section-head h2, .content-card h3 {color:#09295c!important;}
+@media(max-width:760px){
+ .hero .hero-image-wrap {width:100%!important;height:47%!important;position:absolute!important;}
+ .hero::before {background:linear-gradient(180deg,transparent 8%,#073b80 45%,#061f50 76%);}
+ .hero .hero-grid {display:block!important;padding-top:270px!important;padding-bottom:42px!important;}
+ .hero .hero-grid > div:first-child {grid-column:auto!important;}
+ .hero h1 {font-size:clamp(32px,8vw,48px)!important;}
+ .hero .hero-actions {display:flex;flex-wrap:wrap;gap:12px;}
+ header .brand {font-size:20px!important;}
+}
 </style>
-</head>
+<style>
+/* Reference-inspired visual refresh. Original integrations are unchanged. */
+:root{--site-primary:#071f4e!important;--site-secondary:#ffcb32!important;--site-on-secondary:#071f4e!important;--site-background:#fff!important;--site-on-background:#0b1c46!important;--soft:#f3f5fb!important;--muted:#324567!important;--line:#e4e8f2!important}
+body{background:#fff!important;color:#0b1c46!important} .wrap{width:min(1350px,calc(100% - 52px))!important}
+header{background:white!important;position:relative!important}header .nav{min-height:112px;padding:12px 0!important;gap:18px}
+header .brand{font-size:clamp(21px,2.3vw,34px)!important;letter-spacing:-.035em;flex-shrink:0;line-height:1.03!important}
+header .mark{width:100px!important;height:100px!important;overflow:hidden;display:block!important;background:#fff!important;border:0!important;flex-shrink:0}
+header .mark img{width:100%;height:100%;object-fit:contain;display:block}
+header nav{gap:clamp(10px,1.4vw,23px)!important;flex-wrap:wrap;justify-content:flex-end}
+header nav a{color:#0b1c46!important;font-size:clamp(13px,1.12vw,17px)!important;font-weight:750!important;opacity:1!important}
+header nav a[href="#home"]{background:#09285d;color:white!important;padding:10px 15px;border-radius:10px}
+header .nav-cta{display:none!important}
+.hero{min-height:380px!important;background:linear-gradient(115deg,#06549c,#062d72 70%,#041d4c)!important}
+.hero .hero-image-wrap{width:58%!important;height:100%!important;left:0!important;top:0!important}
+.hero .hero-photo{object-fit:cover!important;object-position:center 49%!important}
+.hero::before{background:linear-gradient(90deg,transparent 34%,rgba(6,51,113,.28) 47%,#073775 59%,#041e50 100%)!important}
+.hero .hero-grid{grid-template-columns:1fr 1fr!important;min-height:380px!important;padding:34px 0!important}
+.hero .hero-grid>div:first-child{grid-column:2!important}
+.hero h1{font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(32px,3.8vw,58px)!important;font-weight:700!important;line-height:1.1!important;margin:0 0 19px!important}
+.hero h1::after{height:4px!important;width:70%!important;margin:14px auto 12px!important}
+.hero p{font-size:clamp(17px,1.45vw,21px)!important;line-height:1.5!important;margin:0!important}
+.hero-actions{justify-content:center!important;margin-top:18px!important}
+.hero .btn.gold{background:#ffcb32!important;color:#071f4e!important;padding:15px 30px!important;font-size:clamp(17px,1.5vw,21px)!important;border-radius:50px!important;box-shadow:0 4px 12px #001a4240}
+.quick-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:22px auto 18px!important}
+.quick-link{display:flex;align-items:center;gap:14px;padding:20px 16px;background:#f3f5fa;color:#0b1c46;text-decoration:none;border-radius:13px;min-width:0;transition:transform .15s}
+.quick-link:hover{transform:translateY(-2px);background:#e9eef9}.quick-icon{font-size:36px;line-height:1;min-width:43px;text-align:center}
+.quick-link strong{font-size:clamp(15px,1.3vw,20px);display:block;line-height:1.2}.quick-link small{font-size:clamp(12px,1vw,15px);display:block;margin-top:4px;line-height:1.35}
+#news{padding:25px 0 50px!important;background:white!important}#news .section-head{max-width:none;margin-bottom:20px}#news .section-head h2{font-size:clamp(26px,2.6vw,36px)!important;border-bottom:3px solid #d9a827;padding-bottom:12px;color:#091e4d!important}
+#news .section-head .eyebrow{display:none}#news .two-cards{align-items:start}#news .content-card{border-radius:14px;box-shadow:0 3px 15px #0b1c4610}
+#news h3{font-size:clamp(23px,2vw,30px)!important}#news p{font-size:clamp(16px,1.25vw,20px)!important}
+section{scroll-margin-top:12px} .mission{background:#f8faff!important} .join{background:#07275d!important}
+.btn.green{background:#09295c!important}footer{background:#061d48!important}
+@media(max-width:1000px){header .nav{flex-wrap:wrap;justify-content:center}header nav{justify-content:center}.quick-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.wrap{width:calc(100% - 30px)!important}header .nav{min-height:75px;justify-content:space-between;flex-wrap:nowrap}header .mark{width:61px!important;height:61px!important}header .brand{font-size:19px!important}header nav{display:none!important;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:white!important;padding:18px!important;box-shadow:0 10px 18px #091e4d33}header nav.open{display:flex!important}header nav a{font-size:17px!important;padding:8px}.menu-toggle{display:inline-flex!important;color:#09295c!important;border-color:#09295c!important}.hero{min-height:0!important}.hero .hero-image-wrap{width:100%!important;height:245px!important;position:absolute!important}.hero::before{background:linear-gradient(180deg,transparent 0%,rgba(5,43,105,.3) 160px,#073775 245px,#041e50 100%)!important}.hero .hero-grid{display:block!important;min-height:0!important;padding:260px 0 34px!important}.hero h1{font-size:clamp(30px,7vw,43px)!important;text-align:center}.hero p{text-align:center;font-size:17px!important}.hero .btn.gold{font-size:17px!important}.quick-links{gap:10px;margin:15px auto!important}.quick-link{padding:14px 10px;gap:8px}.quick-icon{font-size:26px;min-width:29px}.quick-link strong{font-size:14px}.quick-link small{font-size:12px}#news{padding-top:16px!important}}
+@media(max-width:380px){.quick-links{grid-template-columns:1fr}}
+</style></head>
 <body>
 <div id="app">
 <header>
 <div class="wrap nav">
-<a aria-label="San Francisco Tigray Community home" class="brand" href="#home"><span class="mark">ST</span><span>San Francisco<br/>Tigray Community</span></a>
+<a aria-label="San Francisco Tigray Community home" class="brand" href="#home"><span class="mark"><img alt="San Francisco Tigray Community logo" src="sf-community-logo.png"/></span><span>San Francisco<br/>Tigray Community</span></a>
 <button aria-controls="main-nav" aria-expanded="false" class="menu-toggle" type="button">☰ <span>Menu</span></button>
-<nav aria-label="Main navigation" id="main-nav"><a href="#about">About</a><a href="#news">News</a><a href="#events">Events</a><a href="#membership">Membership</a><a href="/community-rules/">Community Rules</a><a href="#gallery">Gallery</a><a href="#donations">Donations</a><a href="#contact">Contact</a></nav>
+<nav aria-label="Main navigation" id="main-nav"><a href="#home">Home</a><a href="#about">About</a><a href="#news">News</a><a href="#events">Events</a><a href="#membership">Membership</a><a href="/community-rules/">Community Rules</a><a href="#gallery">Gallery</a><a href="#donations">Donations</a><a href="#contact">Contact</a></nav>
 <a class="nav-cta" href="#membership">Join the Community</a>
 </div>
 </header>
 <main>
 <section class="hero" id="home">
-<div class="hero-image-wrap"><img alt="Stone obelisks at Axum, Tigray" class="hero-photo" src="assets/axum-monument.jpg"/></div>
+<div class="hero-image-wrap"><img alt="Stone obelisks at Axum, Tigray" class="hero-photo" src="https://res.cloudinary.com/ejhsjxfp/image/upload/v1793678598/IMG_0731"/></div>
 <div class="wrap hero-grid">
 <div>
-<div class="eyebrow">A community rooted in heritage</div>
-<h1>Culture. Connection.<br/>Community.</h1>
-<p>Celebrating our Tigrayan heritage, bringing neighbors and families together, and creating a welcoming place to connect, contribute, and grow across the Bay Area.</p>
-<div class="hero-actions"><a class="btn gold" href="#membership">Join the Community →</a><a class="btn outline" href="#events">Explore events</a></div>
-<div class="hero-note">A welcoming community for Tigrayan individuals, families, youth, and friends.</div>
+
+<h1>Together in Community,<br/>United by Heritage</h1>
+<p>A welcoming community for Tigrayans in the San Francisco Bay Area — preserving our heritage, strengthening our people, and building a stronger future together.</p>
+<div class="hero-actions"><a class="btn gold" href="#membership">♟  Join the Community  →</a></div>
+
 </div>
 <aside class="hero-card">
 <div class="big">01</div><h3>Our shared story.<br/>Our brighter future.</h3><p>We believe that belonging grows when we celebrate our roots and make room for every generation.</p>
 <ul><li><span class="check">✓</span> Celebrate culture and traditions</li><li><span class="check">✓</span> Build meaningful connections</li><li><span class="check">✓</span> Encourage community support</li></ul>
 </aside>
+</div>
+</section><div aria-label="Explore the community" class="quick-links wrap"><a class="quick-link" href="#news"><span aria-hidden="true" class="quick-icon">▤</span><span><strong>Community News</strong><small>Announcements and updates</small></span></a><a class="quick-link" href="#events"><span aria-hidden="true" class="quick-icon">▣</span><span><strong>Events</strong><small>Upcoming community activities</small></span></a><a class="quick-link" href="#membership"><span aria-hidden="true" class="quick-icon">♧</span><span><strong>Membership</strong><small>Join and be part of our community</small></span></a><a class="quick-link" href="#gallery"><span aria-hidden="true" class="quick-icon">▧</span><span><strong>Photo &amp; Video Gallery</strong><small>Our community in action</small></span></a></div><section class="news-events" id="news">
+<div class="wrap"><div class="section-head"><div class="eyebrow">Stay in the loop</div><h2>Latest Community News &amp; Events</h2><p>Find community updates and ways to come together. Announcements and event details will be shared as they are confirmed.</p></div>
+<div class="two-cards"><article class="content-card"><span class="tag">Community news</span><h3>News &amp; announcements</h3><p>Updates, community notices, volunteer opportunities, and stories that keep us connected.</p><a class="text-link" href="#contact">Share an announcement →</a>
+<a class="text-link" href="https://docs.google.com/document/d/17-9_PLpVzfpA7vGiQf13Np34x_wMLYpQmL85XEERtJU/edit" rel="noopener noreferrer" target="_blank">Read Community News &amp; Announcements →</a>
+</article>
+<div aria-live="polite" id="community-google-news">
+<div class="content-card">
+<h3>Latest Community News</h3>
+<iframe height="300" loading="lazy" src="https://docs.google.com/document/d/e/2PACX-1vSPXBFrLqGHioH1lmMqD9hBCt01FJcMYCC74JCykoiV3VUMVNVSpyx00lsx_OjxC9wGkGF7eT8xCwwd/pub?embedded=true" style="border:0;" title="San Francisco Tigray Community News" width="100%">
+</iframe>
+<div id="approved-news-documents">
+<h3>Latest Approved Community Documents</h3>
+<div id="approved-news-list">
+<p>No approved public documents yet.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="content-card" id="community-documents">
+<span class="tag">Community Resources</span>
+<h3>Community Documents &amp; Downloads</h3>
+<p>Access important community documents and downloadable files.</p>
+<p>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfCnGeOXt634uT7ZNFQyplaonLKPJrbAyb7vzdxb6DUwBkNuw/viewform?usp=header" rel="noopener noreferrer" style="display:inline-block;background:#174b82;color:white;padding:14px 20px;border-radius:8px;font-weight:bold;text-decoration:none;" target="_blank">
+    Upload Community Documents
+  </a>
+</p>
+<p>
+<a class="text-link" href="/uploads/sf_tigray_test_document.pdf" rel="noopener noreferrer" target="_blank">
+      View or Download Test Community Document (PDF)
+    </a>
+</p>
+<div id="approved-community-documents">
+<h3>Approved Community Documents</h3>
+<div id="approved-documents-list">
+<p>No approved public documents yet.</p>
+</div>
+</div>
+</div>
+<div class="content-card" id="events"><span class="tag">Gather with us</span><h3>Upcoming events</h3><p>Look out for cultural celebrations, family gatherings, educational activities, and community programs. Event dates and locations will be posted here when confirmed.</p><a class="text-link" href="https://docs.google.com/document/d/17HTKDX-oABy9091kzwhFnAWnhH1WQS6bjIaxhafo2Ds/edit?usp=drivesdk">Ask about events →</a></div>
+<div class="content-card">
+<iframe height="200" loading="lazy" src="https://docs.google.com/document/d/e/2PACX-1vTGTWQF3CloNbh5le6QcSoSQ4LV00TOyzFwbD2oBkv301LzqKjep2zFDd0S6F1ztNWU0G-ZCgxzZtj7/pub?embedded=true" style="border:0;" title="San Francisco Tigray Community Events" width="100%">
+</iframe>
 </div>
 </section>
 <section class="mission" id="about">
@@ -324,110 +435,24 @@ textarea {
 <section>
 <div class="wrap split"><div class="community-art"><strong>Our roots bring us together.<br/>Our community moves us forward.</strong><span>Culture · Connection · Community</span></div><div><div class="eyebrow">Together, we grow</div><h2>Many stories.<br/>One community.</h2><p class="body-copy">From family gatherings and cultural celebrations to learning, volunteering, and supporting one another, every person has something meaningful to bring. We are building a community where every generation can feel connected and take part.</p><a class="btn green" href="#contact">Connect with us →</a></div></div>
 </section>
-<section class="news-events" id="news">
-<div class="wrap"><div class="section-head"><div class="eyebrow">Stay in the loop</div><h2>What’s happening</h2><p>Find community updates and ways to come together. Announcements and event details will be shared as they are confirmed.</p></div>
-<div class="two-cards"><article class="content-card"><span class="tag">Community news</span><h3>News &amp; announcements</h3><p>Updates, community notices, volunteer opportunities, and stories that keep us connected.</p><a class="text-link" href="#contact">Share an announcement →</a>
-<a class="text-link" href="https://docs.google.com/document/d/17-9_PLpVzfpA7vGiQf13Np34x_wMLYpQmL85XEERtJU/edit" target="_blank" rel="noopener noreferrer">Read Community News &amp; Announcements →</a>
-</article>
-  
-
-<div id="community-google-news" aria-live="polite">
-  <div class="content-card">
-  <h3>Latest Community News</h3>
-  <iframe
-    src="https://docs.google.com/document/d/e/2PACX-1vSPXBFrLqGHioH1lmMqD9hBCt01FJcMYCC74JCykoiV3VUMVNVSpyx00lsx_OjxC9wGkGF7eT8xCwwd/pub?embedded=true"
-    title="San Francisco Tigray Community News"
-    width="100%"
-    height="300"
-    style="border:0;"
-    loading="lazy">
-  </iframe>
-    
-<div id="approved-news-documents">
-  <h3>Latest Approved Community Documents</h3>
-  <div id="approved-news-list">
-    <p>No approved public documents yet.</p>
-  </div>
-</div>
-
-      
-</div>
-  </div>
-</div>
-  </div>
+</main></div>
 
 
-
-<div class="content-card" id="community-documents">
-  <span class="tag">Community Resources</span>
-  <h3>Community Documents &amp; Downloads</h3>
-  <p>Access important community documents and downloadable files.</p>
-  
-<p>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCnGeOXt634uT7ZNFQyplaonLKPJrbAyb7vzdxb6DUwBkNuw/viewform?usp=header"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="display:inline-block;background:#174b82;color:white;padding:14px 20px;border-radius:8px;font-weight:bold;text-decoration:none;">
-    Upload Community Documents
-  </a>
-</p>
-
-  <p>
-    <a class="text-link"
-       href="/uploads/sf_tigray_test_document.pdf"
-       target="_blank"
-       rel="noopener noreferrer">
-      View or Download Test Community Document (PDF)
-    </a>
-  </p>
-
-
-<div id="approved-community-documents">
-  <h3>Approved Community Documents</h3>
-  <div id="approved-documents-list">
-    <p>No approved public documents yet.</p>
-  </div>
-</div>
-
-  
-</div>
-  
-<div class="content-card" id="events"><span class="tag">Gather with us</span><h3>Upcoming events</h3><p>Look out for cultural celebrations, family gatherings, educational activities, and community programs. Event dates and locations will be posted here when confirmed.</p><a class="text-link" href="https://docs.google.com/document/d/17HTKDX-oABy9091kzwhFnAWnhH1WQS6bjIaxhafo2Ds/edit?usp=drivesdk">Ask about events →</a></article></div>
-<div class="content-card">
-<iframe
-  src="https://docs.google.com/document/d/e/2PACX-1vTGTWQF3CloNbh5le6QcSoSQ4LV00TOyzFwbD2oBkv301LzqKjep2zFDd0S6F1ztNWU0G-ZCgxzZtj7/pub?embedded=true"
-  title="San Francisco Tigray Community Events"
-  width="100%"
-  height="200"
-  style="border:0;"
-  loading="lazy">
-</iframe>
- </div> 
-
-</div>
-</div>
-</section>
 <section class="join" id="membership">
 <div class="wrap join-grid"><div><div class="eyebrow">Your community awaits</div><h2>There’s a place for you here.</h2><p>Whether you are new to the Bay Area or have been part of the community for years, we invite you to connect, participate, and help shape what comes next.</p><div class="join-list"><div><span class="check">✓</span> Stay connected to community updates</div><div><span class="check">✓</span> Take part in cultural and social activities</div><div><span class="check">✓</span> Share your ideas, skills, and interests</div></div></div><div class="join-box"><h3>Become part of the community</h3><p>Let us know you’re interested in joining or volunteering. We’d love to hear from you.</p><a class="btn gold" href="#contact">Get in touch →</a></div></div>
 <div class="wrap">
- 
 <div class="form-card">
-  <h2>Membership Registration</h2>
-  <p>Join the San Francisco Tigray Community.</p>
-  <p>
-    <a class="btn green"
-       href="https://forms.gle/FLqxKiaih6mzRKzM6"
-       target="_blank"
-       rel="noopener noreferrer">
+<h2>Membership Registration</h2>
+<p>Join the San Francisco Tigray Community.</p>
+<p>
+<a class="btn green" href="https://forms.gle/FLqxKiaih6mzRKzM6" rel="noopener noreferrer" target="_blank">
       Open Google Membership Registration Form
     </a>
-  </p>
-  <p>Complete the registration form and agree to the Community Rules &amp; Guidelines before submitting.</p>
+</p>
+<p>Complete the registration form and agree to the Community Rules &amp; Guidelines before submitting.</p>
 </div>
-
 </div>
-
-  <style>
+<style>
     
 form[name="membership-registration"] label:has(input[name="community-rules-agreement"]) {
   display: flex;
@@ -449,10 +474,9 @@ form[name="membership-registration"] label {
   font-weight: 600;
   margin: 12px 0;
 }
-</style>    
-</div>
-</section>
+</style>
 
+</section>
 <style>
 #cloudinary-gallery .gallery-photo img {
   cursor: zoom-in;
@@ -466,12 +490,11 @@ document.addEventListener('click', function(event) {
   }
 });
 </script>
-
-  <section class="mission" id="gallery"><div class="wrap"><div class="section-head"><div class="eyebrow">Community moments</div><h2>photo & video gallery</h2><p>Community photos will appear here when they are provided and approved for publication.</p></div><div class="gallery-grid" id="cloudinary-gallery"><figure class="gallery-photo"><img src="https://res.cloudinary.com/ejhsjxfp/image/upload/v1793678598/IMG_0731" alt="Axum Obelisk" loading="lazy"><figcaption>Axum Obelisk</figcaption></figure></div><p id="gallery-status" class="placeholder-note" role="status" aria-live="polite">Checking for new community photos…</p></div></section><section id="donations"><div class="wrap"><div class="donate-panel"><div><h2>Support Our Community</h2><p>Donation details will be added once an official giving method is provided.</p><p class="placeholder-note">Donation link: not yet configured.</p></div><a class="btn" href="#contact">Contact Us About Donating →</a></div></div></section><section class="contact" id="contact">
+<section class="mission" id="gallery"><div class="wrap"><div class="section-head"><div class="eyebrow">Community moments</div><h2>photo &amp; video gallery</h2><p>Community photos will appear here when they are provided and approved for publication.</p></div><div class="gallery-grid" id="cloudinary-gallery"><figure class="gallery-photo"><img alt="Axum Obelisk" loading="lazy" src="https://res.cloudinary.com/ejhsjxfp/image/upload/v1793678598/IMG_0731"/><figcaption>Axum Obelisk</figcaption></figure></div><p aria-live="polite" class="placeholder-note" id="gallery-status" role="status">Checking for new community photos…</p></div></section><section id="donations"><div class="wrap"><div class="donate-panel"><div><h2>Support Our Community</h2><p>Donation details will be added once an official giving method is provided.</p><p class="placeholder-note">Donation link: not yet configured.</p></div><a class="btn" href="#contact">Contact Us About Donating →</a></div></div></section><section class="contact" id="contact">
 <div class="wrap contact-grid"><div><div class="eyebrow">Say hello</div><h2>Let’s connect.</h2><p class="body-copy">Have a question, an idea, or want to get involved? Send us a message. We welcome your interest and look forward to hearing from you.</p><div class="contact-detail"><span class="feature-icon">✉</span><div><b>Email</b><a href="mailto:info@sftigraycommunity.org" style="overflow-wrap:anywhere">info@sftigraycommunity.org</a></div></div><div class="contact-detail"><span class="feature-icon">⌖</span><div><b>Community</b><span>San Francisco and the greater Bay Area</span></div></div></div>
-<form class="form-card" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-<input type="hidden" name="form-name" value="contact">
-<p hidden><label>Leave empty: <input name="bot-field"></label></p>
+<form class="form-card" data-netlify="true" id="contactForm" method="POST" name="contact" netlify-honeypot="bot-field">
+<input name="form-name" type="hidden" value="contact"/>
+<p hidden=""><label>Leave empty: <input name="bot-field"/></label></p>
 <div class="form-grid"><div class="field"><label for="first">First name *</label><input autocomplete="given-name" id="first" name="first" placeholder="Your first name" required=""/></div><div class="field"><label for="last">Last name *</label><input autocomplete="family-name" id="last" name="last" placeholder="Your last name" required=""/></div></div>
 <div class="field"><label for="email">Email address *</label><input autocomplete="email" id="email" name="email" placeholder="you@example.com" required="" type="email"/></div>
 <div class="field"><label for="topic">I’m reaching out about</label><select id="topic" name="topic"><option>General question</option><option>Membership</option><option>Events</option><option>Volunteering</option><option>Community announcement</option></select></div>
@@ -482,9 +505,9 @@ document.addEventListener('click', function(event) {
 </form>
 </div>
 </section>
-</main>
+
 <footer><div class="wrap footer-row"><div class="brand"><span class="mark">ST</span><span>San Francisco Tigray Community</span></div><small>Culture · Connection · Community</small><a href="mailto:info@sftigraycommunity.org" style="overflow-wrap:anywhere">info@sftigraycommunity.org</a><a href="#home">Back to top ↑</a></div></footer>
-</div>
+
 <script>
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.getElementById('main-nav');
@@ -575,8 +598,6 @@ if (membershipForm) {
 }
 
 </script>
-
-
 <script>
 (async function () {
   const endpoint = "https://script.google.com/macros/s/AKfycbyItWVv_pP1m1w-OA68UTozATyCMP3y8BEWJ_W_SRSzWjelw_C9cOOB7DAcj2IuIEP_/exec";
@@ -640,8 +661,5 @@ if (newsContainer) newsContainer.textContent = "Documents are temporarily unavai
   }
 })();
 </script>
-
-  
-
 </body>
 </html>
