@@ -527,7 +527,31 @@ form.addEventListener('input', () => { success.style.display = 'none'; });
      add(photo.url,photo.alt||'Community photo',photo.caption||'Community photo');
     }
    });
-   status.textContent='';
+   
+(data.videos || []).forEach(video => {
+  if (!video.url || !video.url.startsWith('https://res.cloudinary.com/')) return;
+  if (known.has(video.url)) return;
+  known.add(video.url);
+
+  const figure = document.createElement('figure');
+  figure.className = 'gallery-photo';
+
+  const player = document.createElement('video');
+  player.src = video.url;
+  player.controls = true;
+  player.preload = 'metadata';
+  player.playsInline = true;
+  player.style.width = '100%';
+  player.style.borderRadius = '12px';
+
+  const label = document.createElement('figcaption');
+  label.textContent = video.caption || 'Community video';
+
+  figure.append(player, label);
+  grid.append(figure);
+});
+
+    status.textContent='';
   }catch(e){grid.innerHTML=fallback;status.textContent='Community gallery updates are temporarily unavailable. The Axum photo is still displayed.';}
  }
  refreshGallery();
