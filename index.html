@@ -460,7 +460,7 @@ Sincerely,</textarea></div>
    <button type="submit" class="btn green">Prepare my letter →</button>
    <p class="form-note">This form does not send or store your letter. You will copy it and use the senator’s official contact form. Senate offices generally use web forms rather than public email addresses, and may require a constituent address.</p>
   </form>
-  <div id="senator-letter-result" class="form-card" hidden style="max-width:850px;margin-top:20px" aria-live="polite"><h3>Your letter is ready</h3><p>Copy your letter, then open your senator's official contact page to submit it.</p><button type="button" class="btn green" id="copy-senator-letter">Copy letter</button> <a id="senator-official-contact" class="btn outline" target="_blank" rel="noopener noreferrer">Open official contact form →</a><p id="senator-copy-status" class="form-note"></p></div>
+  <div id="senator-letter-result" class="form-card" hidden style="max-width:850px;margin-top:20px" aria-live="polite"><h3>Your letter is ready</h3><p>Copy the subject and message separately, then open your senator's official contact page. If copying fails, select the text from the boxes below.</p><div class="field"><label for="senator-ready-subject">Subject — copy into the senator’s Subject box</label><input id="senator-ready-subject" type="text" readonly></div><button type="button" class="btn green" id="copy-senator-subject">Copy subject</button><div class="field" style="margin-top:18px"><label for="senator-ready-message">Message — copy into the senator’s Message box</label><textarea id="senator-ready-message" readonly style="min-height:300px;white-space:pre-wrap"></textarea></div><button type="button" class="btn green" id="copy-senator-message">Copy message</button> <button type="button" class="btn outline" id="copy-senator-letter">Copy full letter</button> <a id="senator-official-contact" class="btn outline" target="_blank" rel="noopener noreferrer">Open official contact form →</a><p id="senator-copy-status" class="form-note"></p></div>
  </div>
 </section>
 <script>
@@ -474,16 +474,35 @@ Sincerely,</textarea></div>
  const email=document.getElementById('senator-email').value.trim();
  const subject=document.getElementById('senator-subject').value.trim();
  const body=document.getElementById('senator-message').value.trim();
- letter='Subject: '+subject+'\n\n'+body.replace(/^Dear Senator,?/i,'Dear Senator '+senator+',')+'\n'+name+'\n'+email;
+ const message=body.replace(/^Dear Senator,?/i,'Dear Senator '+senator+',')+'\n'+name+'\n'+email;
+ letter='Subject: '+subject+'\n\n'+message;
+ document.getElementById('senator-ready-subject').value=subject;
+ document.getElementById('senator-ready-message').value=message;
  document.getElementById('senator-official-contact').href=links[senator];
  document.getElementById('senator-letter-result').hidden=false;
  document.getElementById('senator-letter-result').scrollIntoView({behavior:'smooth',block:'nearest'});
  });
- document.getElementById('copy-senator-letter').addEventListener('click',async function(){
- const status=document.getElementById('senator-copy-status');
- try{await navigator.clipboard.writeText(letter);status.textContent='Letter copied. Paste it into the official contact form.'}
- catch(e){status.textContent='Copy was blocked by your browser. Select and copy the text from your letter above instead.'}
- });
+  async function copyField(text,fieldId){
+    const status=document.getElementById('senator-copy-status');
+    const field=document.getElementById(fieldId);
+    try{
+      if(!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(text);
+      status.textContent='Copied! Paste into the matching box on the senator’s official form.';
+    }catch(err){
+      field.focus();field.select();field.setSelectionRange(0,field.value.length);
+      status.textContent='Text selected. On iPhone, tap Copy in the selection menu; on Mac, press Command+C. Then paste into the matching box.';
+    }
+  }
+  document.getElementById('copy-senator-subject').addEventListener('click',function(){
+    copyField(document.getElementById('senator-ready-subject').value,'senator-ready-subject');
+  });
+  document.getElementById('copy-senator-message').addEventListener('click',function(){
+    copyField(document.getElementById('senator-ready-message').value,'senator-ready-message');
+  });
+  document.getElementById('copy-senator-letter').addEventListener('click',function(){
+    copyField(letter,'senator-ready-message');
+  });
 })();
 </script>
 
