@@ -355,7 +355,7 @@ section{scroll-margin-top:12px} .mission{background:#f8faff!important} .join{bac
 <div class="wrap nav">
 <a aria-label="San Francisco Tigray Community home" class="brand" href="#home"><span class="mark"><img alt="San Francisco Tigray Community logo" src="sf-community-logo.png"/></span><span>San Francisco<br/>Tigray Community</span></a>
 <button aria-controls="main-nav" aria-expanded="false" class="menu-toggle" type="button">☰ <span>Menu</span></button>
-<nav aria-label="Main navigation" id="main-nav"><a href="#home">Home</a><a href="#about">About</a><a href="#news">News</a><a href="#events">Events</a><a href="#membership">Membership</a><a href="/community-rules/">Community Rules</a><a href="#gallery">Gallery</a><a href="#donations">Donations</a><a href="#contact">Contact</a></nav>
+<nav aria-label="Main navigation" id="main-nav"><a href="#home">Home</a><a href="#about">About</a><a href="#news">News</a><a href="#events">Events</a><a href="#membership">Membership</a><a href="#write-senators">Write to Senators</a><a href="/community-rules/">Community Rules</a><a href="#gallery">Gallery</a><a href="#donations">Donations</a><a href="#contact">Contact</a></nav>
 <a class="nav-cta" href="#membership">Join the Community</a>
 </div>
 </header>
@@ -437,6 +437,55 @@ section{scroll-margin-top:12px} .mission{background:#f8faff!important} .join{bac
 </section>
 </main></div>
 
+
+
+<section id="write-senators" class="mission" style="padding:55px 0">
+ <div class="wrap">
+  <div class="section-head"><div class="eyebrow">Community advocacy</div><h2>Write to Your U.S. Senators</h2><p>Share your concerns about the humanitarian situation in Tigray. Each person reviews and sends their own message.</p></div>
+  <form id="senator-letter-form" class="form-card" style="max-width:850px">
+   <div class="form-grid"><div class="field"><label for="senator-sender">Your full name *</label><input id="senator-sender" required autocomplete="name"></div><div class="field"><label for="senator-email">Your email address *</label><input id="senator-email" type="email" required autocomplete="email"></div></div>
+   <div class="field"><label for="senator-choice">Choose a California senator *</label><select id="senator-choice" required><option value="">Choose a senator</option><option value="Alex Padilla">Senator Alex Padilla</option><option value="Adam Schiff">Senator Adam Schiff</option></select></div>
+   <div class="field"><label for="senator-subject">Subject *</label><input id="senator-subject" required value="Please support civilian protection and humanitarian access in Tigray"></div>
+   <div class="field"><label for="senator-message">Your letter — edit in your own words *</label><textarea id="senator-message" required style="min-height:340px">Dear Senator,
+
+I am writing as a concerned constituent to ask you to support the protection of civilians and unhindered humanitarian access in Tigray, Ethiopia.
+
+I am deeply concerned about reports of violence and civilian suffering. I urge you to seek credible information, support independent investigations of alleged violations, and advocate for the safety and dignity of affected communities.
+
+Please use your office to encourage diplomatic efforts that prioritize civilian protection, accountability, and humanitarian assistance.
+
+Thank you for your consideration.
+
+Sincerely,</textarea></div>
+   <button type="submit" class="btn green">Prepare my letter →</button>
+   <p class="form-note">This form does not send or store your letter. You will copy it and use the senator’s official contact form. Senate offices generally use web forms rather than public email addresses, and may require a constituent address.</p>
+  </form>
+  <div id="senator-letter-result" class="form-card" hidden style="max-width:850px;margin-top:20px" aria-live="polite"><h3>Your letter is ready</h3><p>Copy your letter, then open your senator's official contact page to submit it.</p><button type="button" class="btn green" id="copy-senator-letter">Copy letter</button> <a id="senator-official-contact" class="btn outline" target="_blank" rel="noopener noreferrer">Open official contact form →</a><p id="senator-copy-status" class="form-note"></p></div>
+ </div>
+</section>
+<script>
+(function(){
+ const f=document.getElementById('senator-letter-form');
+ const links={'Alex Padilla':'https://www.padilla.senate.gov/contact/contact-form/','Adam Schiff':'https://www.schiff.senate.gov/contact/'};
+ let letter='';
+ f.addEventListener('submit',function(e){e.preventDefault();if(!f.reportValidity())return;
+ const senator=document.getElementById('senator-choice').value;
+ const name=document.getElementById('senator-sender').value.trim();
+ const email=document.getElementById('senator-email').value.trim();
+ const subject=document.getElementById('senator-subject').value.trim();
+ const body=document.getElementById('senator-message').value.trim();
+ letter='Subject: '+subject+'\n\n'+body.replace(/^Dear Senator,?/i,'Dear Senator '+senator+',')+'\n'+name+'\n'+email;
+ document.getElementById('senator-official-contact').href=links[senator];
+ document.getElementById('senator-letter-result').hidden=false;
+ document.getElementById('senator-letter-result').scrollIntoView({behavior:'smooth',block:'nearest'});
+ });
+ document.getElementById('copy-senator-letter').addEventListener('click',async function(){
+ const status=document.getElementById('senator-copy-status');
+ try{await navigator.clipboard.writeText(letter);status.textContent='Letter copied. Paste it into the official contact form.'}
+ catch(e){status.textContent='Copy was blocked by your browser. Select and copy the text from your letter above instead.'}
+ });
+})();
+</script>
 
 <section class="join" id="membership">
 <div class="wrap join-grid"><div><div class="eyebrow">Your community awaits</div><h2>There’s a place for you here.</h2><p>Whether you are new to the Bay Area or have been part of the community for years, we invite you to connect, participate, and help shape what comes next.</p><div class="join-list"><div><span class="check">✓</span> Stay connected to community updates</div><div><span class="check">✓</span> Take part in cultural and social activities</div><div><span class="check">✓</span> Share your ideas, skills, and interests</div></div></div><div class="join-box"><h3>Become part of the community</h3><p>Let us know you’re interested in joining or volunteering. We’d love to hear from you.</p><a class="btn gold" href="#contact">Get in touch →</a></div></div>
