@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>San Francisco Tigray Community</title>
+<style>
+/* Reduce empty space in Latest Community News */
+#news .wrap {
+  align-items: start !important;
+}
+
+#news {
+  min-height: auto !important;
+}
+
+#news .wrap > * {
+  min-height: 0 !important;
+}
+/* Reduce empty space in News section */
+#news {
+  min-height: auto !important;
+  height: auto !important;
+}
+
+#news .wrap {
+  align-items: start !important;
+}
+
+#news h2,
+#news h3,
+#news p {
+  margin-bottom: 16px;
+}
+
+/* Make community news larger and bolder */
+#news h2,
+#news h3 {
+  font-size: 34px !important;
+  font-weight: 800 !important;
+}
+
+#news p {
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  line-height: 1.6 !important;
+}
+
+.hero p,
+.hero-note,
+.hero-card p,
+.hero-card li,
+.feature p,
+.content-card p,
+.mission p {
+  font-size: 20px !important;
+  line-height: 1.7 !important;
+}
+
+.hero .eyebrow,
+.section-head .eyebrow,
+.content-card .tag {
+  font-size: 18px !important;
+}
+
+.feature {
+  padding: 30px !important;
+}
+
+
+
+  :root {
+  --site-primary: #174b3a;
+  --site-on-primary: #ffffff;
+  --site-secondary: #d7aa54;
+  --site-on-secondary: #17251d;
+  --site-background: #f7f5ef;
+  --site-on-background: #203229;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Georgia, "Times New Roman", serif;
+  --site-heading-scale: 1.2;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  --surface: light-dark(#ffffff, #17231d);
+  --muted: light-dark(#5c6b62, #bac7be);
+  --line: light-dark(#e2e6df, #35463c);
+  --soft: light-dark(#edf2eb, #23372c);
+}
+* { box-sizing: border-box; }
+html { color-scheme: light dark; scroll-behavior: smooth; }
+body { margin: 0;font-size: 20px; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
+.feature h3 { font-size: 26px !important; }
+.feature p { font-size: 22px !important; line-height: 1.6; }
+  
+  #app { width: 100%; min-height: 100vh; background-color: var(--site-background); color: var(--site-on-background); border-radius: 0; overflow: hidden; }
+a { color: inherit; }
+.wrap { width: min(1120px, calc(100% - 40px)); margin: auto; }
+header { background: var(--site-primary); color: var(--site-on-primary); }
+.nav { display:flex; justify-content:space-between; align-items:center; gap:20px; padding: 19px 0; }
+.brand { display:flex; gap:12px; align-items:center; text-decoration:none; font-weight:750; letter-spacing:-.02em; }
+  .brand { font-size: 32px; font-weight: 800; }
+@media (max-width: 600px) {
+  .brand { font-size: 22px; }
+}
+.mark { display:grid; place-items:center; width:42px; height:42px; border-radius:50%; color:var(--site-on-secondary); background:var(--site-secondary); font-family:var(--site-font-heading); font-weight:bold; }
+nav { display:flex; gap:24px; align-items:center; }
+nav a { text-decoration:none; color:#f3f7f3; font-size:18; opacity:.92; }
+nav a:hover { text-decoration:underline; text-underline-offset:5px; }
+.nav-cta, .btn { display:inline-flex; justify-content:center; align-items:center; gap:8px; padding:12px 18px; border-radius:calc(12px * var(--site-radius-scale)); font-weight:700; font-size:14px; text-decoration:none; border:1px solid transparent; cursor:pointer; transition: transform .15s ease, background .15s ease; }
+.nav-cta, .btn.gold { background:var(--site-secondary); color:var(--site-on-secondary); }
+.btn.green { background:var(--site-primary); color:var(--site-on-primary); }
+.btn.outline { border-color:currentColor; color:inherit; background:transparent; }
+.btn:hover, .nav-cta:hover { transform:translateY(-1px); }
+.hero { position:relative; overflow:hidden; color:#fff; background:var(--site-primary); }
+.hero-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 45%; }
+.hero-shade { position:absolute; inset:0; background:linear-gradient(90deg, rgba(9,36,28,.94), rgba(9,36,28,.48)); pointer-events:none; }
+.hero:after { content:""; position:absolute; width:460px; height:460px; right:-120px; top:-210px; border:1px solid rgba(255,255,255,.16); border-radius:50%; box-shadow:0 0 0 45px rgba(255,255,255,.035), 0 0 0 95px rgba(255,255,255,.025); opacity:var(--site-decoration-opacity); pointer-events:none; }
+.hero-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:50px; align-items:center; padding:90px 0 92px; position:relative; z-index:1; }
+.eyebrow { display:flex; align-items:center; gap:10px; text-transform:uppercase; letter-spacing:.15em; font-size:11px; font-weight:800; color:var(--site-secondary); }
+.eyebrow:before { content:""; height:2px; width:28px; background:var(--site-secondary); }
+h1,h2,h3 { font-family:var(--site-font-heading); font-weight:500; letter-spacing:-.035em; }
+h1 { font-size:calc(clamp(42px, 6vw, 68px) * var(--site-heading-scale)); line-height:1.04; margin:20px 0; max-width:700px; }
+.hero p { max-width:610px; color:#e0e9e2; line-height:1.75; font-size:17px; }
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
+.hero-note { margin-top:24px; font-size:12px; color:#c5d7ca; }
+.hero-card { border:1px solid rgba(255,255,255,.23); border-radius:22px; background:rgba(255,255,255,.08); padding:28px; backdrop-filter:blur(6px); }
+.hero-card .big { font-family:var(--site-font-heading); font-size:52px; color:var(--site-secondary); line-height:1; }
+.hero-card h3 { font-size:24px; margin:14px 0 8px; }
+.hero-card p { font-size:14px; margin:0; }
+.hero-card ul { padding:0; list-style:none; margin:22px 0 0; display:grid; gap:12px; }
+.hero-card li { display:flex; gap:10px; align-items:center; color:#e9f0ea; font-size:13px; }
+.check { display:grid; place-items:center; width:20px; height:20px; background:rgba(215,170,84,.2); color:var(--site-secondary); border-radius:50%; font-size:12px; }
+section { padding:72px 0; }
+.section-head { max-width:650px; margin-bottom:32px; }
+.section-head .eyebrow { color:var(--site-primary); }
+h2 { font-size:calc(clamp(30px, 4vw, 44px) * var(--site-heading-scale)); line-height:1.1; margin:13px 0; }
+.section-head p, .body-copy { color:var(--muted); line-height:1.75; }
+.mission { background:var(--surface); }
+.feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.feature { border:1px solid var(--line); border-radius:calc(18px * var(--site-radius-scale)); padding:25px; background:var(--surface); }
+.feature-icon { width:44px; height:44px; display:grid; place-items:center; background:var(--soft); color:var(--site-primary); border-radius:14px; font-size:21px; }
+.feature h3 { font-size:23px; margin:17px 0 9px; }
+.feature p { color:var(--muted); font-size:14px; line-height:1.7; margin:0; }
+.split { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
+.community-art { min-height:290px; border-radius:22px; padding:28px; display:flex; flex-direction:column; justify-content:end; color:white; background:linear-gradient(135deg, #174b3a, #49765a 60%, #c9a35a); position:relative; overflow:hidden; }
+.community-art:before { content:""; position:absolute; width:280px; height:280px; border:1px solid rgba(255,255,255,.25); border-radius:50%; top:-110px; right:-55px; box-shadow:0 0 0 35px rgba(255,255,255,.04),0 0 0 75px rgba(255,255,255,.04); }
+.community-art strong { position:relative; font: 34px/1.15 var(--site-font-heading); max-width:320px; }
+.community-art span { position:relative; margin-top:12px; font-size:12px; letter-spacing:.13em; text-transform:uppercase; }
+.news-events { background:var(--soft); }
+.two-cards { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.content-card { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:28px; }
+.content-card .tag { display:inline-block; color:var(--site-primary); background:var(--soft); border-radius:30px; padding:6px 10px; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.1em; }
+.content-card h3 { font-size:27px; margin:17px 0 10px; }
+.content-card p { color:var(--muted); line-height:1.7; }
+.text-link { display:inline-flex; margin-top:12px; text-decoration:none; font-weight:750; color:var(--site-primary); }
+.join { background:var(--site-primary); color:white; }
+.join-grid { display:grid; grid-template-columns:1.2fr .8fr; align-items:center; gap:40px; }
+.join h2 { color:white; }
+.join p { color:#d7e5da; line-height:1.75; }
+.join-list { display:grid; gap:12px; margin:20px 0 0; }
+.join-list div { display:flex; gap:10px; align-items:center; color:#e6eee8; font-size:14px; }
+.join-box { border:1px solid rgba(255,255,255,.22); background:rgba(255,255,255,.08); border-radius:20px; padding:26px; }
+.join-box h3 { font-size:25px; margin:0 0 10px; }
+.join-box p { font-size:14px; }
+.contact { background:var(--surface); }
+.contact-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:50px; align-items:start; }
+.contact-detail { display:flex; gap:12px; margin-top:20px; align-items:flex-start; }
+.contact-detail b { display:block; font-size:14px; margin-bottom:4px; }
+.contact-detail span { color:var(--muted); font-size:13px; }
+.form-card { border:1px solid var(--line); background:var(--surface); border-radius:20px; padding:28px; box-shadow:0 12px 35px rgba(20,50,35,.05); }
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+label { display:block; font-size:13px; font-weight:700; margin-bottom:7px; }
+.field { margin-bottom:16px; }
+input,textarea,select { width:100%; border:1px solid var(--line); background:var(--site-background); color:var(--site-on-background); border-radius:10px; padding:12px 13px; font:inherit; font-size:14px; }
+textarea { min-height:125px; resize:vertical; }
+input:focus,textarea:focus,select:focus { outline:2px solid var(--site-secondary); outline-offset:1px; }
+.form-note { color:var(--muted); font-size:12px; line-height:1.5; margin-top:12px; }
+.success { display:none; margin-top:14px; border-radius:10px; padding:12px; background:var(--soft); color:var(--site-on-background); font-size:13px; }
+footer { background:#102f24; color:#e3ece5; padding:30px 0; }
+.footer-row { display:flex; justify-content:space-between; gap:20px; align-items:center; flex-wrap:wrap; }
+footer small { color:#b8c9bd; }
+footer a { color:#e3ece5; text-decoration:none; font-size:13px; }
+@media (max-width:760px) {
+  .wrap { width:min(100% - 32px, 1120px); }
+  .nav { padding:14px 0; }
+  nav { display:none; position:absolute; top:100%; left:0; right:0; background:var(--site-primary); padding:16px 24px 24px; flex-direction:column; align-items:flex-start; z-index:5; box-shadow:0 12px 20px rgba(0,0,0,.18); }
+  nav.open { display:flex; }
+  .menu-toggle { display:inline-flex; }
+  .brand { font-size:14px; }
+  .mark { width:37px; height:37px; }
+  .nav-cta { padding:10px 12px; font-size:12px; }
+  .hero-grid { grid-template-columns:1fr; gap:28px; padding:62px 0 64px; }
+  .hero p { font-size:15px; }
+  .hero-shade { background:rgba(9,36,28,.73); }
+  .hero-card { padding:23px; }
+  section { padding:55px 0; }
+  .feature-grid,.two-cards,.split,.join-grid,.contact-grid { grid-template-columns:1fr; gap:18px; }
+  .split { gap:28px; }
+  .community-art { min-height:230px; }
+  .join-grid { gap:28px; }
+  .contact-grid { gap:28px; }
+  .form-card { padding:20px; }
+  .form-grid { grid-template-columns:1fr; gap:0; }
+  .footer-row { align-items:flex-start; flex-direction:column; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+
+
+/* Updated modern blue-and-white design */
+:root{--site-primary:#073763;--site-on-primary:#fff;--site-secondary:#dcecff;--site-on-secondary:#073763;--site-background:#f5f8fc;--site-on-background:#10263d;--surface:#fff;--muted:#53677c;--line:#d9e4f0;--soft:#eaf2fb;--site-font-heading:Inter,ui-sans-serif,system-ui,sans-serif}
+html{color-scheme:light}header{position:relative;z-index:10}footer{background:#052846}.mark{background:#e2efff;color:#073763}.hero{background:#073763}.hero-shade{background:linear-gradient(90deg,rgba(4,27,53,.88),rgba(4,27,53,.55) 50%,rgba(4,27,53,.1))}.hero-grid{grid-template-columns:1.2fr .8fr}.hero h1{font-weight:800}.hero-card{background:rgba(4,27,53,.52)}.eyebrow{color:#dcecff}.btn.gold,.nav-cta{background:#fff;color:#073763}.btn.green{background:#073763}.join{background:#073763}.section-head .eyebrow,.text-link{color:#073763}.feature-icon{color:#073763}.community-art{background:linear-gradient(135deg,#073763,#307bb4)}
+.gallery-photo{margin:0;border-radius:16px;overflow:hidden;background:#e8f0f8}.gallery-photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}.gallery-photo figcaption{padding:10px 12px;color:#334e68;font-size:14px}.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.gallery-placeholder{aspect-ratio:4/3;background:#e8f0f8;border:2px dashed #adc4da;border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;color:#526b83;padding:18px}.donate-panel{display:flex;align-items:center;justify-content:space-between;gap:24px;background:#073763;color:#fff;padding:34px;border-radius:20px}.donate-panel h2{color:#fff;margin:0 0 10px}.donate-panel p{margin:0;color:#d9e9f7}.donate-panel .btn{background:#fff;color:#073763}.placeholder-note{font-size:13px;color:#64788c}.donate-panel .placeholder-note{color:#e1eaf5}.menu-toggle{background:transparent;color:inherit;border:1px solid #a6c5df;border-radius:9px;padding:8px 10px;cursor:pointer;display:none}
+@media(max-width:760px){.menu-toggle{display:inline-flex;gap:6px}.nav-cta{display:none}.hero-grid{grid-template-columns:1fr}.hero-shade{background:rgba(4,27,53,.73)}.gallery-grid{grid-template-columns:1fr 1fr}.donate-panel{flex-direction:column;align-items:flex-start}.hero-photo{object-position:60% center}}
+@media(max-width:420px){.gallery-grid{grid-template-columns:1fr}}
+
+/* Clear Axum photo and light, readable homepage */
+.hero { background:#f5f9ff; color:#123b60; }
+.hero-image-wrap { width:100%; height:clamp(340px,55vw,650px); overflow:hidden; background:#e8f1fa; }
+.hero .hero-photo { position:static; display:block; width:100%; height:100%; object-fit:contain; object-position:center center; }
+.hero-shade { display:none!important; }
+.hero:after { display:none; }
+.hero-grid { grid-template-columns:1.2fr .8fr; padding:54px 0 64px; gap:35px; }
+.hero h1 { color:#103c66; }
+.hero p,.hero-note { color:#405b73; }
+.hero .eyebrow { color:#27669a; }
+.hero .btn.gold { background:#0b568e; color:white; }
+.hero .btn.outline { color:#0b568e; border-color:#0b568e; }
+.hero-card { background:white; border:1px solid #d8e7f4; color:#173e60; backdrop-filter:none; box-shadow:0 10px 28px rgba(8,46,82,.06); }
+.hero-card .big { color:#2c74ac; }
+.hero-card p,.hero-card li { color:#405b73; }
+.hero-card .check { background:#eaf3fb; color:#0b568e; }
+@media(max-width:760px) {
+ .hero-image-wrap { height: min(112vw,520px); }
+ .hero .hero-photo { object-fit:contain; object-position:center center; }
+ .hero-grid { grid-template-columns:1fr; padding:36px 0 48px; }
+}
+/* Remove empty space around the main photo */
+section.hero {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.hero .hero-image-wrap {
+  height: auto;
+}
+.hero .hero-photo {
+  height: auto;
+}
+/* Dark blue text on white backgrounds */
+body {
+  color: #17365D;
+}
+
+/* Dark blue text on light sections */
+section:not(.hero) p,
+section:not(.hero) .muted,
+section:not(.hero) .eyebrow,
+section:not(.hero) .card p,
+section:not(.hero) label,
+section:not(.hero) small {
+  color: #17365D;
+}
+
+/* Make smaller text easier to read */
+section p,
+section li,
+section label,
+section small,
+section .muted,
+section .eyebrow,
+footer p,
+footer a {
+  font-size: max(16px, 1em);
+  line-height: 1.7;
+}
+
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+  
+
+/* 2026 refreshed homepage - preserves all original sections and integrations */
+:root { --sf-navy:#09295c; --sf-gold:#ffcb32; }
+header {background:#fff!important; box-shadow:0 3px 18px rgba(10,35,77,.10);}
+header .brand {color:#09295c!important; font-weight:900!important; font-size:clamp(20px,2.2vw,31px)!important; line-height:1.08!important;}
+header .mark {background:linear-gradient(140deg,#ffd137 0 48%,#c9192c 49% 100%)!important;color:#09295c!important;border:2px solid #09295c;}
+header nav a {font-weight:750!important;}
+.hero {background:linear-gradient(115deg,#063b80,#061e4b)!important;color:white!important;min-height:0!important;overflow:hidden;}
+.hero .hero-image-wrap {position:absolute!important;left:0!important;top:0!important;width:50%!important;height:100%!important;opacity:1!important;z-index:0!important;}
+.hero .hero-photo {width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;filter:none!important;}
+.hero::before {content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 25%,#073b80 53%,#061f50 100%);z-index:1;pointer-events:none;}
+.hero .hero-grid {position:relative!important;z-index:2!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:28px!important;align-items:center!important;padding-top:65px!important;padding-bottom:65px!important;}
+.hero .hero-grid > div:first-child {grid-column:2!important;}
+.hero .hero-card {display:none!important;}
+.hero h1 {font-size:clamp(34px,4.2vw,66px)!important;line-height:1.08!important;color:white!important;letter-spacing:-.035em!important;}
+.hero h1::after {content:"";display:block;width:58%;height:4px;background:#ffcb32;margin:20px auto 10px;border-radius:50%;}
+.hero p,.hero .hero-note {color:white!important;font-size:clamp(17px,1.6vw,22px)!important;line-height:1.55!important;}
+.hero .eyebrow {color:#ffcb32!important;}
+.hero .btn.gold {background:#ffcb32!important;color:#09295c!important;border-radius:30px!important;font-weight:900!important;}
+.hero .btn.outline {border-color:#fff!important;color:#fff!important;}
+.section-head h2, .content-card h3 {color:#09295c!important;}
+@media(max-width:760px){
+ .hero .hero-image-wrap {width:100%!important;height:47%!important;position:absolute!important;}
+ .hero::before {background:linear-gradient(180deg,transparent 8%,#073b80 45%,#061f50 76%);}
+ .hero .hero-grid {display:block!important;padding-top:270px!important;padding-bottom:42px!important;}
+ .hero .hero-grid > div:first-child {grid-column:auto!important;}
+ .hero h1 {font-size:clamp(32px,8vw,48px)!important;}
+ .hero .hero-actions {display:flex;flex-wrap:wrap;gap:12px;}
+ header .brand {font-size:20px!important;}
+}
+</style>
+<style>
+/* Reference-inspired visual refresh. Original integrations are unchanged. */
+:root{--site-primary:#071f4e!important;--site-secondary:#ffcb32!important;--site-on-secondary:#071f4e!important;--site-background:#fff!important;--site-on-background:#0b1c46!important;--soft:#f3f5fb!important;--muted:#324567!important;--line:#e4e8f2!important}
+body{background:#fff!important;color:#0b1c46!important} .wrap{width:min(1350px,calc(100% - 52px))!important}
+header{background:white!important;position:relative!important}header .nav{min-height:112px;padding:12px 0!important;gap:18px}
+header .brand{font-size:clamp(21px,2.3vw,34px)!important;letter-spacing:-.035em;flex-shrink:0;line-height:1.03!important}
+header .mark{width:100px!important;height:100px!important;overflow:hidden;display:block!important;background:#fff!important;border:0!important;flex-shrink:0}
+header .mark img{width:100%;height:100%;object-fit:contain;display:block}
+header nav{gap:clamp(10px,1.4vw,23px)!important;flex-wrap:wrap;justify-content:flex-end}
+header nav a{color:#0b1c46!important;font-size:clamp(13px,1.12vw,17px)!important;font-weight:750!important;opacity:1!important}
+header nav a[href="#home"]{background:#09285d;color:white!important;padding:10px 15px;border-radius:10px}
+header .nav-cta{display:none!important}
+.hero{min-height:380px!important;background:linear-gradient(115deg,#06549c,#062d72 70%,#041d4c)!important}
+.hero .hero-image-wrap{width:58%!important;height:100%!important;left:0!important;top:0!important}
+.hero .hero-photo{object-fit:cover!important;object-position:center 49%!important}
+.hero::before{background:linear-gradient(90deg,transparent 34%,rgba(6,51,113,.28) 47%,#073775 59%,#041e50 100%)!important}
+.hero .hero-grid{grid-template-columns:1fr 1fr!important;min-height:380px!important;padding:34px 0!important}
+.hero .hero-grid>div:first-child{grid-column:2!important}
+.hero h1{font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(32px,3.8vw,58px)!important;font-weight:700!important;line-height:1.1!important;margin:0 0 19px!important}
+.hero h1::after{height:4px!important;width:70%!important;margin:14px auto 12px!important}
+.hero p{font-size:clamp(17px,1.45vw,21px)!important;line-height:1.5!important;margin:0!important}
+.hero-actions{justify-content:center!important;margin-top:18px!important}
+.hero .btn.gold{background:#ffcb32!important;color:#071f4e!important;padding:15px 30px!important;font-size:clamp(17px,1.5vw,21px)!important;border-radius:50px!important;box-shadow:0 4px 12px #001a4240}
+.quick-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:22px auto 18px!important}
+.quick-link{display:flex;align-items:center;gap:14px;padding:20px 16px;background:#f3f5fa;color:#0b1c46;text-decoration:none;border-radius:13px;min-width:0;transition:transform .15s}
+.quick-link:hover{transform:translateY(-2px);background:#e9eef9}.quick-icon{font-size:36px;line-height:1;min-width:43px;text-align:center}
+.quick-link strong{font-size:clamp(15px,1.3vw,20px);display:block;line-height:1.2}.quick-link small{font-size:clamp(12px,1vw,15px);display:block;margin-top:4px;line-height:1.35}
+#news{padding:25px 0 50px!important;background:white!important}#news .section-head{max-width:none;margin-bottom:20px}#news .section-head h2{font-size:clamp(26px,2.6vw,36px)!important;border-bottom:3px solid #d9a827;padding-bottom:12px;color:#091e4d!important}
+#news .section-head .eyebrow{display:none}#news .two-cards{align-items:start}#news .content-card{border-radius:14px;box-shadow:0 3px 15px #0b1c4610}
+#news h3{font-size:clamp(23px,2vw,30px)!important}#news p{font-size:clamp(16px,1.25vw,20px)!important}
+section{scroll-margin-top:12px} .mission{background:#f8faff!important} .join{background:#07275d!important}
+.btn.green{background:#09295c!important}footer{background:#061d48!important}
+@media(max-width:1000px){header .nav{flex-wrap:wrap;justify-content:center}header nav{justify-content:center}.quick-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.wrap{width:calc(100% - 30px)!important}header .nav{min-height:75px;justify-content:space-between;flex-wrap:nowrap}header .mark{width:61px!important;height:61px!important}header .brand{font-size:19px!important}header nav{display:none!important;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:white!important;padding:18px!important;box-shadow:0 10px 18px #091e4d33}header nav.open{display:flex!important}header nav a{font-size:17px!important;padding:8px}.menu-toggle{display:inline-flex!important;color:#09295c!important;border-color:#09295c!important}.hero{min-height:0!important}.hero .hero-image-wrap{width:100%!important;height:245px!important;position:absolute!important}.hero::before{background:linear-gradient(180deg,transparent 0%,rgba(5,43,105,.3) 160px,#073775 245px,#041e50 100%)!important}.hero .hero-grid{display:block!important;min-height:0!important;padding:260px 0 34px!important}.hero h1{font-size:clamp(30px,7vw,43px)!important;text-align:center}.hero p{text-align:center;font-size:17px!important}.hero .btn.gold{font-size:17px!important}.quick-links{gap:10px;margin:15px auto!important}.quick-link{padding:14px 10px;gap:8px}.quick-icon{font-size:26px;min-width:29px}.quick-link strong{font-size:14px}.quick-link small{font-size:12px}#news{padding-top:16px!important}}
+@media(max-width:380px){.quick-links{grid-template-columns:1fr}}
+</style></head>
+<body>
+<div id="app">
+<header>
+<div class="wrap nav">
+<a aria-label="San Francisco Tigray Community home" class="brand" href="#home"><span class="mark"><img alt="San Francisco Tigray Community logo" src="sf-community-logo.png"/></span><span>San Francisco<br/>Tigray Community</span></a>
+<button aria-controls="main-nav" aria-expanded="false" class="menu-toggle" type="button">☰ <span>Menu</span></button>
+<nav aria-label="Main navigation" id="main-nav"><a href="#home">Home</a><a href="#about">About</a><a href="#news">News</a><a href="#events">Events</a><a href="#membership">Membership</a><a href="#write-senators">Write to Congress</a><a href="/community-rules/">Community Rules</a><a href="#gallery">Gallery</a><a href="#donations">Donations</a><a href="#contact">Contact</a></nav>
+<a class="nav-cta" href="#membership">Join the Community</a>
+</div>
+</header>
+<main>
+<section class="hero" id="home">
+<div class="hero-image-wrap"><img alt="Stone obelisks at Axum, Tigray" class="hero-photo" src="axum obelixs.jpeg"/></div>
+<div class="wrap hero-grid">
+<div>
+
+<h1>Together in Community,<br/>United by Heritage</h1>
+<p>A welcoming community for Tigrayans in the San Francisco Bay Area — preserving our heritage, strengthening our people, and building a stronger future together.</p>
+<div class="hero-actions"><a class="btn gold" href="#membership">♟  Join the Community  →</a></div>
+
+</div>
+<aside class="hero-card">
+<div class="big">01</div><h3>Our shared story.<br/>Our brighter future.</h3><p>We believe that belonging grows when we celebrate our roots and make room for every generation.</p>
+<ul><li><span class="check">✓</span> Celebrate culture and traditions</li><li><span class="check">✓</span> Build meaningful connections</li><li><span class="check">✓</span> Encourage community support</li></ul>
+</aside>
+</div>
+</section><div aria-label="Explore the community" class="quick-links wrap"><a class="quick-link" href="#news"><span aria-hidden="true" class="quick-icon">▤</span><span><strong>Community News</strong><small>Announcements and updates</small></span></a><a class="quick-link" href="#events"><span aria-hidden="true" class="quick-icon">▣</span><span><strong>Events</strong><small>Upcoming community activities</small></span></a><a class="quick-link" href="#membership"><span aria-hidden="true" class="quick-icon">♧</span><span><strong>Membership</strong><small>Join and be part of our community</small></span></a><a class="quick-link" href="#gallery"><span aria-hidden="true" class="quick-icon">▧</span><span><strong>Photo &amp; Video Gallery</strong><small>Our community in action</small></span></a></div><section class="news-events" id="news">
+<div class="wrap"><div class="section-head"><div class="eyebrow">Stay in the loop</div><h2>Latest Community News &amp; Events</h2><p>Find community updates and ways to come together. Announcements and event details will be shared as they are confirmed.</p></div>
+<div class="two-cards"><article class="content-card"><span class="tag">Community news</span><h3>News &amp; announcements</h3><p>Updates, community notices, volunteer opportunities, and stories that keep us connected.</p><a class="text-link" href="#contact">Share an announcement →</a>
+<a class="text-link" href="https://docs.google.com/document/d/17-9_PLpVzfpA7vGiQf13Np34x_wMLYpQmL85XEERtJU/edit" rel="noopener noreferrer" target="_blank">Read Community News &amp; Announcements →</a>
+</article>
+<div aria-live="polite" id="community-google-news">
+<div class="content-card">
+<h3>Latest Community News</h3>
+<iframe height="300" loading="lazy" src="https://docs.google.com/document/d/e/2PACX-1vSPXBFrLqGHioH1lmMqD9hBCt01FJcMYCC74JCykoiV3VUMVNVSpyx00lsx_OjxC9wGkGF7eT8xCwwd/pub?embedded=true" style="border:0;" title="San Francisco Tigray Community News" width="100%">
+</iframe>
+<div id="approved-news-documents">
+<h3>Latest Approved Community Documents</h3>
+<div id="approved-news-list">
+<p>No approved public documents yet.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="content-card" id="community-documents">
+<span class="tag">Community Resources</span>
+<h3>Community Documents &amp; Downloads</h3>
+<p>Access important community documents and downloadable files.</p>
+<p>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfCnGeOXt634uT7ZNFQyplaonLKPJrbAyb7vzdxb6DUwBkNuw/viewform?usp=header" rel="noopener noreferrer" style="display:inline-block;background:#174b82;color:white;padding:14px 20px;border-radius:8px;font-weight:bold;text-decoration:none;" target="_blank">
+    Upload Community Documents
+  </a>
+</p>
+<p>
+<a class="text-link" href="/uploads/sf_tigray_test_document.pdf" rel="noopener noreferrer" target="_blank">
+      View or Download Test Community Document (PDF)
+    </a>
+</p>
+<div id="approved-community-documents">
+<h3>Approved Community Documents</h3>
+<div id="approved-documents-list">
+<p>No approved public documents yet.</p>
+</div>
+</div>
+</div>
+<div class="content-card" id="events"><span class="tag">Gather with us</span><h3>Upcoming events</h3><p>Look out for cultural celebrations, family gatherings, educational activities, and community programs. Event dates and locations will be posted here when confirmed.</p><a class="text-link" href="https://docs.google.com/document/d/17HTKDX-oABy9091kzwhFnAWnhH1WQS6bjIaxhafo2Ds/edit?usp=drivesdk">Ask about events →</a></div>
+<div class="content-card">
+<iframe height="200" loading="lazy" src="https://docs.google.com/document/d/e/2PACX-1vTGTWQF3CloNbh5le6QcSoSQ4LV00TOyzFwbD2oBkv301LzqKjep2zFDd0S6F1ztNWU0G-ZCgxzZtj7/pub?embedded=true" style="border:0;" title="San Francisco Tigray Community Events" width="100%">
+</iframe>
+</div>
+</section>
+<section class="mission" id="about">
+<div class="wrap">
+<div class="section-head"><div class="eyebrow">Who we are</div><h2>A place to belong.<br/>A heritage to carry forward.</h2><p>Our mission is to connect the Tigrayan community through cultural preservation, meaningful relationships, mutual support, and opportunities to participate. We welcome people who want to share in our heritage and help nurture a connected, thriving community.</p></div>
+<div class="feature-grid">
+<article class="feature"><div class="feature-icon">✧</div><h3>Honor our heritage</h3><p>Celebrate Tigrayan culture, language, traditions, and values—and pass them on to future generations.</p></article>
+<article class="feature"><div class="feature-icon">♡</div><h3>Strengthen connection</h3><p>Create welcoming opportunities for people and families to meet, build friendships, and feel at home.</p></article>
+<article class="feature"><div class="feature-icon">↗</div><h3>Support one another</h3><p>Share skills, ideas, and time with a spirit of care, participation, and community responsibility.</p></article>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap split"><div class="community-art"><strong>Our roots bring us together.<br/>Our community moves us forward.</strong><span>Culture · Connection · Community</span></div><div><div class="eyebrow">Together, we grow</div><h2>Many stories.<br/>One community.</h2><p class="body-copy">From family gatherings and cultural celebrations to learning, volunteering, and supporting one another, every person has something meaningful to bring. We are building a community where every generation can feel connected and take part.</p><a class="btn green" href="#contact">Connect with us →</a></div></div>
+</section>
+</main></div>
+
+
+
+<section id="write-senators" class="mission" style="padding:55px 0">
+ <div class="wrap">
+  <div class="section-head"><div class="eyebrow">Community advocacy</div><h2>Write to U.S. Senators &amp; the Speaker of the House</h2><p>Share your concerns about the humanitarian situation in Tigray. Choose a recipient, review your letter, and submit it yourself through the official website or available office contact method.</p></div>
+  <form id="senator-letter-form" class="form-card" style="max-width:850px">
+   <div class="form-grid"><div class="field"><label for="senator-sender">Your full name *</label><input id="senator-sender" required autocomplete="name"></div><div class="field"><label for="senator-email">Your email address *</label><input id="senator-email" type="email" required autocomplete="email"></div></div>
+   <div class="field"><label for="senator-choice">Choose a congressional leader *</label><select id="senator-choice" required><option value="">Choose a recipient</option><option value="Mike Johnson">Speaker of the House Mike Johnson</option><option value="Alex Padilla">Senator Alex Padilla</option><option value="Adam Schiff">Senator Adam Schiff</option></select></div>
+   <div class="field"><label for="senator-subject">Subject *</label><input id="senator-subject" required value="Please support civilian protection and humanitarian access in Tigray"></div>
+   <div class="field"><label for="senator-message">Your letter — edit in your own words *</label><textarea id="senator-message" required style="min-height:340px">Dear Senator,
+
+I am writing as a concerned constituent to ask you to support the protection of civilians and unhindered humanitarian access in Tigray, Ethiopia.
+
+I am deeply concerned about reports of violence and civilian suffering. I urge you to seek credible information, support independent investigations of alleged violations, and advocate for the safety and dignity of affected communities.
+
+Please use your office to encourage diplomatic efforts that prioritize civilian protection, accountability, and humanitarian assistance.
+
+Thank you for your consideration.
+
+Sincerely,</textarea></div>
+   <button type="submit" class="btn green">Prepare my letter →</button>
+   <p class="form-note">This form does not send or store your letter. You will copy it and use the selected official contact page. Some congressional contact forms restrict submissions to constituents; the Speaker’s official website provides office contact information (202-225-4000); it is not a direct submission form.</p>
+  </form>
+  <div id="senator-letter-result" class="form-card" hidden style="max-width:850px;margin-top:20px" aria-live="polite"><h3>Your letter is ready</h3><p>Copy the subject and message separately, then open your recipient's official contact page. If copying fails, select the text from the boxes below.</p><div class="field"><label for="senator-ready-subject">Subject — copy into the official form’s Subject box</label><input id="senator-ready-subject" type="text" readonly></div><button type="button" class="btn green" id="copy-senator-subject">Copy subject</button><div class="field" style="margin-top:18px"><label for="senator-ready-message">Message — copy into the official form’s Message box</label><textarea id="senator-ready-message" readonly style="min-height:300px;white-space:pre-wrap"></textarea></div><button type="button" class="btn green" id="copy-senator-message">Copy message</button> <button type="button" class="btn outline" id="copy-senator-letter">Copy full letter</button> <a id="senator-official-contact" class="btn outline" target="_blank" rel="noopener noreferrer">Open official contact page →</a><p id="senator-copy-status" class="form-note"></p></div>
+ </div>
+</section>
+<script>
+(function(){
+ const f=document.getElementById('senator-letter-form');
+ const links={'Alex Padilla':'https://www.padilla.senate.gov/contact/contact-form/','Adam Schiff':'https://www.schiff.senate.gov/contact/','Mike Johnson':'https://www.speaker.gov/'};
+ let letter='';
+ f.addEventListener('submit',function(e){e.preventDefault();if(!f.reportValidity())return;
+ const senator=document.getElementById('senator-choice').value;
+ const name=document.getElementById('senator-sender').value.trim();
+ const email=document.getElementById('senator-email').value.trim();
+ const subject=document.getElementById('senator-subject').value.trim();
+ const body=document.getElementById('senator-message').value.trim();
+ const greeting=senator==='Mike Johnson'?'Dear Speaker Johnson,':'Dear Senator '+senator+',';
+  const message=body.replace(/^Dear Senator,?/i,greeting)+'\n'+name+'\n'+email;
+ letter='Subject: '+subject+'\n\n'+message;
+ document.getElementById('senator-ready-subject').value=subject;
+ document.getElementById('senator-ready-message').value=message;
+ document.getElementById('senator-official-contact').href=links[senator];
+ document.getElementById('senator-letter-result').hidden=false;
+ document.getElementById('senator-letter-result').scrollIntoView({behavior:'smooth',block:'nearest'});
+ });
+  async function copyField(text,fieldId){
+    const status=document.getElementById('senator-copy-status');
+    const field=document.getElementById(fieldId);
+    try{
+      if(!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(text);
+      status.textContent='Copied! Paste into the matching box on the official contact form.';
+    }catch(err){
+      field.focus();field.select();field.setSelectionRange(0,field.value.length);
+      status.textContent='Text selected. On iPhone, tap Copy in the selection menu; on Mac, press Command+C. Then paste into the matching box.';
+    }
+  }
+  document.getElementById('copy-senator-subject').addEventListener('click',function(){
+    copyField(document.getElementById('senator-ready-subject').value,'senator-ready-subject');
+  });
+  document.getElementById('copy-senator-message').addEventListener('click',function(){
+    copyField(document.getElementById('senator-ready-message').value,'senator-ready-message');
+  });
+  document.getElementById('copy-senator-letter').addEventListener('click',function(){
+    copyField(letter,'senator-ready-message');
+  });
+})();
+</script>
+
+<section class="join" id="membership">
+<div class="wrap join-grid"><div><div class="eyebrow">Your community awaits</div><h2>There’s a place for you here.</h2><p>Whether you are new to the Bay Area or have been part of the community for years, we invite you to connect, participate, and help shape what comes next.</p><div class="join-list"><div><span class="check">✓</span> Stay connected to community updates</div><div><span class="check">✓</span> Take part in cultural and social activities</div><div><span class="check">✓</span> Share your ideas, skills, and interests</div></div></div><div class="join-box"><h3>Become part of the community</h3><p>Let us know you’re interested in joining or volunteering. We’d love to hear from you.</p><a class="btn gold" href="#contact">Get in touch →</a></div></div>
+<div class="wrap">
+<div class="form-card">
+<h2>Membership Registration</h2>
+<p>Join the San Francisco Tigray Community.</p>
+<p>
+<a class="btn green" href="https://forms.gle/FLqxKiaih6mzRKzM6" rel="noopener noreferrer" target="_blank">
+      Open Google Membership Registration Form
+    </a>
+</p>
+<p>Complete the registration form and agree to the Community Rules &amp; Guidelines before submitting.</p>
+</div>
+</div>
+<style>
+    
+form[name="membership-registration"] label:has(input[name="community-rules-agreement"]) {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+form[name="membership-registration"] input[name="community-rules-agreement"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+form[name="membership-registration"] label {
+  display: block;
+  color: #203229;
+  font-weight: 600;
+  margin: 12px 0;
+}
+</style>
+
+</section>
+<style>
+#cloudinary-gallery .gallery-photo img {
+  cursor: zoom-in;
+}
+</style>
+<script>
+document.addEventListener('click', function(event) {
+  const photo = event.target.closest('#cloudinary-gallery img');
+  if (photo) {
+    window.open(photo.src, '_blank');
+  }
+});
+</script>
+<section class="mission" id="gallery"><div class="wrap"><div class="section-head"><div class="eyebrow">Community moments</div><h2>photo &amp; video gallery</h2><p>Community photos will appear here when they are provided and approved for publication.</p></div><div class="gallery-grid" id="cloudinary-gallery"><figure class="gallery-photo"><img alt="Axum Obelisk" loading="lazy" src="https://res.cloudinary.com/ejhsjxfp/image/upload/v1793678598/IMG_0731"/><figcaption>Axum Obelisk</figcaption></figure></div><p aria-live="polite" class="placeholder-note" id="gallery-status" role="status">Checking for new community photos…</p></div></section><section id="donations"><div class="wrap"><div class="donate-panel"><div><h2>Support Our Community</h2><p>Donation details will be added once an official giving method is provided.</p><p class="placeholder-note">Donation link: not yet configured.</p></div><a class="btn" href="#contact">Contact Us About Donating →</a></div></div></section><section class="contact" id="contact">
+<div class="wrap contact-grid"><div><div class="eyebrow">Say hello</div><h2>Let’s connect.</h2><p class="body-copy">Have a question, an idea, or want to get involved? Send us a message. We welcome your interest and look forward to hearing from you.</p><div class="contact-detail"><span class="feature-icon">✉</span><div><b>Email</b><a href="mailto:info@sftigraycommunity.org" style="overflow-wrap:anywhere">info@sftigraycommunity.org</a></div></div><div class="contact-detail"><span class="feature-icon">⌖</span><div><b>Community</b><span>San Francisco and the greater Bay Area</span></div></div></div>
+<form class="form-card" data-netlify="true" id="contactForm" method="POST" name="contact" netlify-honeypot="bot-field">
+<input name="form-name" type="hidden" value="contact"/>
+<p hidden=""><label>Leave empty: <input name="bot-field"/></label></p>
+<div class="form-grid"><div class="field"><label for="first">First name *</label><input autocomplete="given-name" id="first" name="first" placeholder="Your first name" required=""/></div><div class="field"><label for="last">Last name *</label><input autocomplete="family-name" id="last" name="last" placeholder="Your last name" required=""/></div></div>
+<div class="field"><label for="email">Email address *</label><input autocomplete="email" id="email" name="email" placeholder="you@example.com" required="" type="email"/></div>
+<div class="field"><label for="topic">I’m reaching out about</label><select id="topic" name="topic"><option>General question</option><option>Membership</option><option>Events</option><option>Volunteering</option><option>Community announcement</option></select></div>
+<div class="field"><label for="message">Your message *</label><textarea id="message" name="message" placeholder="How can we help?" required=""></textarea></div>
+<button class="btn green" type="submit">Send message <span>→</span></button>
+<p class="form-note">We’ll use your details to respond to your message.</p>
+<div aria-live="polite" class="success" id="success" role="status"></div>
+</form>
+</div>
+</section>
+
+<footer><div class="wrap footer-row"><div class="brand"><span class="mark">ST</span><span>San Francisco Tigray Community</span></div><small>Culture · Connection · Community</small><a href="mailto:info@sftigraycommunity.org" style="overflow-wrap:anywhere">info@sftigraycommunity.org</a><a href="#home">Back to top ↑</a></div></footer>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const mainNav = document.getElementById('main-nav');
+menuToggle.addEventListener('click', () => {
+  const open = mainNav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', String(open));
+});
+mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  mainNav.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+}));
+const form = document.getElementById('contactForm');
+const success = document.getElementById('success');
+
+form.addEventListener('input', () => { success.style.display = 'none'; });
+</script>
+<script>
+(function(){
+ const grid=document.getElementById('cloudinary-gallery');
+ const status=document.getElementById('gallery-status');
+ const fallback=grid.innerHTML;
+ async function refreshGallery(){
+  try{
+   const response=await fetch('/.netlify/functions/community-gallery',{cache:'no-store'});
+   if(!response.ok) throw Error('Gallery service unavailable');
+   const data=await response.json();
+   if(!Array.isArray(data.photos)) throw Error('Unexpected gallery response');
+   grid.replaceChildren();
+   const known=new Set();
+   function add(url,alt,caption){
+    if(known.has(url))return; known.add(url);
+    const figure=document.createElement('figure');figure.className='gallery-photo';
+    const img=document.createElement('img');img.src=url;img.alt=alt;img.loading='lazy';
+    const label=document.createElement('figcaption');label.textContent=caption;
+    figure.append(img,label);grid.append(figure);
+   }
+   add('https://res.cloudinary.com/ejhsjxfp/image/upload/v1793678598/IMG_0731','Axum Obelisk','Axum Obelisk');
+   data.photos.forEach(photo=>{
+    if(typeof photo.url==='string' && photo.url.startsWith('https://res.cloudinary.com/ejhsjxfp/image/upload/')){
+     add(photo.url,photo.alt||'Community photo',photo.caption||'Community photo');
+    }
+   });
+   
+(data.videos || []).forEach(video => {
+  if (!video.url || !video.url.startsWith('https://res.cloudinary.com/')) return;
+  if (known.has(video.url)) return;
+  known.add(video.url);
+
+  const figure = document.createElement('figure');
+  figure.className = 'gallery-photo';
+
+  const player = document.createElement('video');
+  player.src = video.url;
+  player.controls = true;
+  player.preload = 'metadata';
+  player.playsInline = true;
+  player.style.width = '100%';
+  player.style.borderRadius = '12px';
+
+  const label = document.createElement('figcaption');
+  label.textContent = video.caption || 'Community video';
+
+  figure.append(player, label);
+  grid.append(figure);
+});
+
+    status.textContent='';
+  }catch(e){grid.innerHTML=fallback;status.textContent='Community gallery updates are temporarily unavailable. The Axum photo is still displayed.';}
+ }
+ refreshGallery();
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshGallery();});
+})();
+
+const membershipForm = document.querySelector('form[name="membership-registration"]');
+
+if (membershipForm) {
+  membershipForm.addEventListener('submit', () => {
+    const data = Object.fromEntries(new FormData(membershipForm));
+
+    fetch('https://script.google.com/macros/s/AKfycbyZV6ztkSArc49sIU2ker9JdtS95pcBCANPlkJhnLcybEs62SB8ErNMciRi_QuNaZVx/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(data),
+      keepalive: true
+    }).catch(error => console.error('Membership sync failed:', error));
+  });
+}
+
+</script>
+<script>
+(async function () {
+  const endpoint = "https://script.google.com/macros/s/AKfycbyItWVv_pP1m1w-OA68UTozATyCMP3y8BEWJ_W_SRSzWjelw_C9cOOB7DAcj2IuIEP_/exec";
+
+  
+const container = document.getElementById("approved-documents-list");
+const newsContainer = document.getElementById("approved-news-list");
+
+  
+if (!container && !newsContainer) return;
+
+
+  try {
+    const response = await fetch(endpoint);
+    if (!response.ok) throw new Error("Unable to load documents");
+
+    const documents = await response.json();
+    
+if (container) container.replaceChildren();
+if (newsContainer) newsContainer.replaceChildren();
+
+
+    if (!Array.isArray(documents) || documents.length === 0) {
+     
+if (container) container.textContent = "No approved public documents yet.";
+if (newsContainer) newsContainer.textContent = "No approved public documents yet.";
+
+      return;
+    }
+
+    documents.forEach(doc => {
+      if (!doc.title || !doc.url) return;
+
+      const item = document.createElement("p");
+      const link = document.createElement("a");
+
+      link.textContent = doc.title;
+      link.href = doc.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+
+      item.appendChild(link);
+
+      if (doc.description) {
+        const description = document.createElement("span");
+        description.textContent = " — " + doc.description;
+        item.appendChild(description);
+      }
+
+     
+if (container) container.appendChild(item);
+if (newsContainer) newsContainer.appendChild(item.cloneNode(true));
+
+    });
+  } catch (error) {
+    console.error("Approved documents:", error);
+    
+if (container) container.textContent = "Documents are temporarily unavailable.";
+if (newsContainer) newsContainer.textContent = "Documents are temporarily unavailable.";
+
+  }
+})();
+</script>
+</body>
+</html>
