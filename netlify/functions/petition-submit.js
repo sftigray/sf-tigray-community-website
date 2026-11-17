@@ -23,7 +23,10 @@ exports.handler = async function (event) {
   }
 
   const scriptUrl = process.env.PETITION_SCRIPT_URL;
-
+const sharedSecret = process.env.PETITION_SHARED_SECRET;
+  if (!sharedSecret) {
+  return reply(503, "Petition security is not configured.");
+}
   if (!scriptUrl) {
     return reply(503, "Petition service is not configured.");
   }
