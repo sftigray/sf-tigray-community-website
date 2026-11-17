@@ -31,6 +31,37 @@ const sharedSecret = process.env.PETITION_SHARED_SECRET;
     return reply(503, "Petition service is not configured.");
   }
 
-  // A secure submission handler will be added after testing.
+  try {
+  const data = JSON.parse(event.body || "{}");
+
+  const response = await fetch(scriptUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: data.name,
+      email: data.email,
+      city: data.city,
+      state: data.state,
+      consent: data.consent === true,
+      sharedSecret: sharedSecret
+    })
+  });
+
+  if (!response.ok) {
+    return reply(502, "Petition service unavailable.");
+  }
+
+  const result = await response.json();
+
+  return {
+    statusCode: 200,
+    headers,
+    body: JSON.stringify(result)
+  };
+} catch (error) {
+  return reply(502, "Unable to process petition submission.");
+}
   return reply(503, "Petition connection is not yet activated.");
 };
