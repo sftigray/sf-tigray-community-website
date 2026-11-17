@@ -17,10 +17,21 @@ exports.handler = async function (event) {
 
   // Keep submissions disabled during connection testing.
   const PETITION_TEST_MODE = true;
-
+const PETITION_PRIVATE_TEST_TOKEN = process.env.PETITION_PRIVATE_TEST_TOKEN;
   if (PETITION_TEST_MODE) {
+  const isPreview = process.env.CONTEXT === "deploy-preview";
+  const suppliedToken =
+    event.headers?.["x-petition-test-token"] ||
+    event.headers?.["X-Petition-Test-Token"];
+
+  if (
+    !isPreview ||
+    !PETITION_PRIVATE_TEST_TOKEN ||
+    suppliedToken !== PETITION_PRIVATE_TEST_TOKEN
+  ) {
     return reply(503, "Petition submissions are not enabled yet.");
   }
+}
 
   const scriptUrl = process.env.PETITION_SCRIPT_URL;
 const sharedSecret = process.env.PETITION_SHARED_SECRET;
