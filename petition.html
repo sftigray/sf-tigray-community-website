@@ -216,14 +216,7 @@
   console.log("SF Tigray Congressional Petition — test mode");
   const PETITION_TEST_MODE = true;
   const PETITION_SCRIPT_URL = "/.netlify/functions/petition-submit";
-  fetch(PETITION_SCRIPT_URL)
-  .then(response => response.json())
-  .then(data => {
-    console.log("Petition connection test:", data);
-  })
-  .catch(error => {
-    console.error("Petition connection test failed:", error);
-  });
+  
 </script>
 </body>
 </html>
