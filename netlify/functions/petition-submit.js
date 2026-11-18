@@ -65,6 +65,15 @@ const sharedSecret = process.env.PETITION_SHARED_SECRET;
   }
 
   const result = await response.json();
+    
+    if (result.success !== true) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify(result)
+      };
+    }
+
 
   return {
     statusCode: 200,
