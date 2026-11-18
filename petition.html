@@ -216,7 +216,21 @@
   console.log("SF Tigray Congressional Petition — test mode");
   const PETITION_TEST_MODE = true;
   const PETITION_SCRIPT_URL = "/.netlify/functions/petition-submit";
-  
+ 
+const petitionForm = document.querySelector("form");
+const petitionButton = petitionForm.querySelector("button");
+const petitionMessage = document.getElementById("petition-message");
+
+petitionForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  if (PETITION_TEST_MODE) {
+    petitionMessage.textContent =
+      "Petition signatures are not enabled yet.";
+    return;
+  }
+});
+ 
 </script>
 </body>
 </html>
