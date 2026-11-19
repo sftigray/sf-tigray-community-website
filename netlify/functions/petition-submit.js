@@ -24,7 +24,8 @@ const isPreview = process.env.DEPLOY_PRIME_URL === "https://deploy-preview-1--ce
     event.headers?.["x-petition-test-token"] ||
     event.headers?.["X-Petition-Test-Token"];
 console.log("Petition private test check:", { context: process.env.CONTEXT, tokenConfigured: Boolean(PETITION_PRIVATE_TEST_TOKEN), tokenMatches: Boolean(PETITION_PRIVATE_TEST_TOKEN && suppliedToken === PETITION_PRIVATE_TEST_TOKEN) });
-  if (
+console.log("Preview URL configured:", Boolean(process.env.DEPLOY_PRIME_URL), "Preview URL matches:", isPreview); 
+    if (
     !isPreview ||
     !PETITION_PRIVATE_TEST_TOKEN ||
     suppliedToken !== PETITION_PRIVATE_TEST_TOKEN
