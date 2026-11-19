@@ -83,5 +83,5 @@ const sharedSecret = process.env.PETITION_SHARED_SECRET;
 } catch (error) {
   return reply(502, "Unable to process petition submission.");
 }
-  return reply(503, "Petition connection is not yet activated.");
+  
 };
