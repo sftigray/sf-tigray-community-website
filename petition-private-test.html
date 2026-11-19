@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Private Petition Connection Test</title>
+<style>body{font:17px Arial,sans-serif;max-width:650px;margin:30px auto;padding:0 18px;color:#183153;background:#f4f7fb}main{background:white;padding:25px;border-radius:12px}label{display:block;margin-top:16px;font-weight:bold}input{box-sizing:border-box;width:100%;padding:12px;margin-top:5px;font-size:16px}button{margin-top:20px;background:#123568;color:white;border:0;border-radius:6px;padding:14px;cursor:pointer;font-size:17px}#result{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef2f8;padding:14px;border-radius:6px}small{display:block;margin-top:6px}</style></head>
+<body><main><h1>Private petition connection test</h1>
+<p><strong>Test branch only.</strong> This page does not activate public signing. Only run it on the Netlify deploy-preview URL, not the public website.</p>
+<p>Netlify requires a private test token. If Netlify won't reveal the old one, create a replacement value in the Deploy previews environment setting and keep a copy privately. Never send it to anyone.</p>
+<form id="test"><label for="token">Private test token</label><input id="token" type="password" required autocomplete="off" spellcheck="false"><small>The token stays in this page's memory and is sent only to the same-origin Netlify function; it is not saved.</small>
+<label for="email">Unused test email address</label><input id="email" type="email" required autocomplete="off">
+<label for="name">Test name</label><input id="name" value="Private Petition Test" required>
+<label for="city">City</label><input id="city" value="San Francisco" required>
+<label for="state">State abbreviation</label><input id="state" value="CA" maxlength="2" pattern="[A-Za-z]{2}" required>
+<label><input id="consent" type="checkbox" required style="width:auto"> I consent to this private test submission and verification email.</label>
+<button id="send" type="submit">Send private test</button></form><h2>Test result</h2><div id="result" role="status">No test sent yet.</div><p><a href="/petition.html">Return to disabled petition page</a></p></main>
+<script>
+const form=document.getElementById('test'), result=document.getElementById('result'), button=document.getElementById('send');
+form.addEventListener('submit',async event=>{
+ event.preventDefault();
+ if(!location.hostname.includes('deploy-preview-') || !location.hostname.endsWith('.netlify.app')){result.textContent='Blocked: open this test page on the Netlify deploy preview.';return;}
+ const token=document.getElementById('token').value;
+ const payload={name:document.getElementById('name').value.trim(),email:document.getElementById('email').value.trim(),city:document.getElementById('city').value.trim(),state:document.getElementById('state').value.trim().toUpperCase(),consent:document.getElementById('consent').checked};
+ button.disabled=true;result.textContent='Sending private test…';
+ try{
+ const response=await fetch('/.netlify/functions/petition-submit',{method:'POST',headers:{'Content-Type':'application/json','x-petition-test-token':token},body:JSON.stringify(payload),cache:'no-store'});
+ const text=await response.text();let parsed;try{parsed=JSON.parse(text)}catch{parsed=null}
+ result.textContent='HTTP status: '+response.status+'\n'+(parsed?.message || (parsed?.success===true?'Submission received. Check your test email.':'Response received; check Netlify logs.'));
+ }catch(e){result.textContent='Network error: '+e.message}finally{button.disabled=false;document.getElementById('token').value='';}
+});
+</script></body></html>
