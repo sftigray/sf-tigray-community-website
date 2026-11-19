@@ -19,7 +19,7 @@ exports.handler = async function (event) {
   const PETITION_TEST_MODE = true;
 const PETITION_PRIVATE_TEST_TOKEN = process.env.PETITION_PRIVATE_TEST_TOKEN;
   if (PETITION_TEST_MODE) {
- const isPreview = event.headers?.host?.startsWith("deploy-preview-1--celebrated-banoffee-daf640.netlify.app") === true;
+const isPreview = process.env.DEPLOY_PRIME_URL === "https://deploy-preview-1--celebrated-banoffee-daf640.netlify.app";
   const suppliedToken =
     event.headers?.["x-petition-test-token"] ||
     event.headers?.["X-Petition-Test-Token"];
