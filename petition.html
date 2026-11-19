@@ -230,8 +230,36 @@ petitionForm.addEventListener("submit", async (event) => {
     return;
   }
   
-    petitionMessage.textContent = "Petition submission is not enabled during testing.";
-    return;
+    
+    petitionButton.disabled = true;
+    petitionMessage.textContent = "Submitting your signature...";
+
+    try {
+      const formData = new FormData(petitionForm);
+      const response = await fetch(PETITION_SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          city: formData.get("city"),
+          state: formData.get("state"),
+          consent: formData.get("consent") !== null
+        })
+      });
+
+      const result = await response.json();
+      petitionMessage.textContent =
+        result.message || (response.ok
+          ? "Submission received. Please check your email."
+          : "Submission failed. Please try again.");
+    } catch (error) {
+      petitionMessage.textContent =
+        "Unable to submit right now. Please try again later.";
+    } finally {
+      petitionButton.disabled = false;
+    }
+
 
 });
  
