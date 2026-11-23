@@ -14,6 +14,11 @@
 <button id="send" type="submit">Send private test</button></form><h2>Test result</h2><div id="result" role="status">No test sent yet.</div><p><a href="/petition.html">Return to disabled petition page</a></p></main>
 <script>
 const form=document.getElementById('test'), result=document.getElementById('result'), button=document.getElementById('send');
+ const tokenField = document.getElementById('token');
+tokenField.value = sessionStorage.getItem('petitionPrivateTestToken') || '';
+tokenField.addEventListener('input', () => {
+  sessionStorage.setItem('petitionPrivateTestToken', tokenField.value);
+});
 form.addEventListener('submit',async event=>{
  event.preventDefault();
  if(!location.hostname.includes('deploy-preview-') || !location.hostname.endsWith('.netlify.app')){result.textContent='Blocked: open this test page on the Netlify deploy preview.';return;}
