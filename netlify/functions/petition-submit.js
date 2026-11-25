@@ -63,6 +63,7 @@ const sharedSecret = process.env.PETITION_SHARED_SECRET;
       city: data.city,
       state: data.state,
       consent: data.consent === true,
+      recordType: PETITION_TEST_MODE ? "Test" : "Public",
       sharedSecret: sharedSecret
     })
   });
