@@ -128,7 +128,7 @@
     </article>
 
     <p class="notice">
-     Petition signing is temporarily unavailable while final launch checks are completed.
+     Petition signing is now open. Please read the complete petition above before signing.
     </p>
 
     <form>
@@ -196,7 +196,7 @@
         <option value="WY">Wyoming</option>
       </select>
 
-      <p class="eligibility">This petition is intended for residents of the 50 U.S. states. Petition signing will become available after final launch checks are completed.</p>
+<p class="eligibility">This petition is intended for residents of the 50 U.S. states. Please complete all required fields and verify your email address to confirm your signature.</p>
 
       <div class="consent">
         <input type="checkbox" id="consent" required>
@@ -205,7 +205,7 @@
         </label>
       </div>
 
-      <button type="submit" disabled>Sign Petition</button>
+     <button type="submit">Sign Petition</button>
    <p id="petition-message" role="status" aria-live="polite"></p> 
     </form>
 
@@ -214,8 +214,8 @@
     </p>
   </main>
 <script>
-  console.log("SF Tigray Congressional Petition — test mode");
-  const PETITION_TEST_MODE = true;
+  console.log("Ethiopian Diaspora Congressional Petition");
+  const PETITION_TEST_MODE = false;
   const PETITION_SCRIPT_URL = "/.netlify/functions/petition-submit";
  
 const petitionForm = document.querySelector("form");
