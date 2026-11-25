@@ -198,8 +198,7 @@
 <p class="eligibility">This petition is intended for residents of the 50 U.S. states. Please complete all required fields and verify your email address to confirm your signature.</p>
 
       <div class="consent">
-        <input type="checkbox" id="consent" required>
-        <label for="consent">
+        <label><input type="checkbox" id="consent" name="consent" required>
           I confirm that I reside in one of the 50 U.S. states, have read the complete petition above, support its message, and consent to the collection of my information for petition verification and submission to elected officials.
         </label>
       </div>
@@ -213,7 +212,7 @@
   </main>
 <script>
   console.log("Ethiopian Diaspora Congressional Petition");
-  const PETITION_TEST_MODE = false;
+  const PETITION_TEST_MODE = true;
   const PETITION_SCRIPT_URL = "/.netlify/functions/petition-submit";
  
 const petitionForm = document.querySelector("form");
