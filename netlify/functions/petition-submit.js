@@ -16,7 +16,7 @@ exports.handler = async function (event) {
   }
 
   // Keep submissions disabled during connection testing.
-  const PETITION_TEST_MODE = true;
+  const PETITION_TEST_MODE = false;
 const PETITION_PRIVATE_TEST_TOKEN = process.env.PETITION_PRIVATE_TEST_TOKEN;
   if (PETITION_TEST_MODE) {
     const isPreview = process.env.PETITION_PREVIEW_ENABLED === "true";
