@@ -67,8 +67,12 @@
       color: white;
       font-size: 17px;
       cursor: pointer;
-      opacity: .6;
-    }
+      opacity: 1;
+  }
+  button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+  }
     .notice {
       padding: 14px;
       background: #fff4d6;
@@ -130,8 +134,7 @@
       <p>Together with the undersigned supporters of this Congressional Petition.</p>
     </article>
 
-    <p class="notice">Petition signing is temporarily unavailable while final launch checks are completed.
-    </p>
+    <p class="notice">Petition signing is now open. Please complete the form below and verify your email address to confirm your signature.</p>
 
     <form>
       <label for="name">Full Name</label>
@@ -206,7 +209,7 @@
         </label>
       </div>
 
-   <button type="submit" disabled>Sign Petition</button> 
+   <button type="submit">Sign Petition</button>
     </form>
 
     <p>
@@ -215,7 +218,7 @@
   </main>
 <script>
   console.log("Ethiopian Diaspora Congressional Petition");
-  const PETITION_TEST_MODE = true;
+  const PETITION_TEST_MODE = false;
   const PETITION_SCRIPT_URL = "/.netlify/functions/petition-submit";
  
 const petitionForm = document.querySelector("form");
