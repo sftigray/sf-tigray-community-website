@@ -254,9 +254,10 @@ petitionForm.addEventListener("submit", async (event) => {
 
       const result = await response.json();
       petitionMessage.textContent =
-        result.message || (response.ok
-          ? "Submission received. Please check your email."
-          : "Submission failed. Please try again.");
+  response.ok
+    ? (result.message || "Submission received.") +
+      " IMPORTANT: Please check your email now and confirm your signature. If you cannot find the email, check your Spam or Junk folder. Your signature is not complete until verified."
+    : (result.message || "Submission failed. Please try again.");
     } catch (error) {
       petitionMessage.textContent =
         "Unable to submit right now. Please try again later.";
