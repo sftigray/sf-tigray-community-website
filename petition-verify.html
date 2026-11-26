@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<title>Confirm Your Petition Signature</title>
+
+<style>
+body {
+  margin: 0;
+  background: #f1f5f9;
+  font-family: Arial, sans-serif;
+  color: #123568;
+  line-height: 1.6;
+}
+header {
+  background: #123568;
+  color: white;
+  padding: 25px 15px;
+  text-align: center;
+}
+main {
+  max-width: 550px;
+  margin: 30px auto;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px #00000012;
+}
+button {
+  width: 100%;
+  padding: 16px;
+  background: #123568;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 19px;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:disabled {
+  background: #8795a8;
+  cursor: default;
+}
+#result {
+  font-size: 19px;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+a {
+  color: #123568;
+}
+@media (max-width: 600px) {
+  main {
+    margin: 20px 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Ethiopian Diaspora</h1>
+  <p>Congressional Petition</p>
+  <strong>Prepared by San Francisco Tigray Community</strong>
+</header>
+
+<main>
+  <h2>Confirm Your Petition Signature</h2>
+
+  <p>Thank you for your support. Please press the button below to verify your email address and confirm your signature.</p>
+
+  <button id="confirm" type="button">
+    Confirm My Signature
+  </button>
+
+  <p id="result" role="status" aria-live="polite"></p>
+
+  <p>
+    <a href="/">Return to Community Homepage</a>
+  </p>
+</main>
+
+<script>
+const token = new URLSearchParams(
+  window.location.search
+).get("token") || "";
+
+const button = document.getElementById("confirm");
+const result = document.getElementById("result");
+
+if (!/^[0-9a-f-]{72}$/i.test(token)) {
+  button.disabled = true;
+  result.textContent = "Invalid verification link.";
+}
+
+button.addEventListener("click", async function () {
+  button.disabled = true;
+  result.style.color = "#123568";
+  result.textContent = "Verifying your signature...";
+
+  try {
+    const response = await fetch(
+      "/.netlify/functions/petition-verify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ token: token })
+      }
+    );
+
+    const data = await response.json();
+
+    if (response.ok && data.success === true) {
+      result.style.color = "#166534";
+      result.textContent =
+        "Signature Verified! Thank you for supporting the petition.";
+      button.textContent = "Signature Confirmed";
+      history.replaceState(null, "", window.location.pathname);
+    } else {
+      result.style.color = "#b91c1c";
+      result.textContent =
+        data.message || "Unable to verify signature.";
+      button.disabled = false;
+    }
+  } catch (error) {
+    result.style.color = "#b91c1c";
+    result.textContent =
+      "Unable to verify right now. Please try again.";
+    button.disabled = false;
+  }
+});
+</script>
+
+</body>
+</html>
